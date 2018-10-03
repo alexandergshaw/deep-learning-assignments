@@ -1,0 +1,13 @@
+CS-5001: HW#1 
+Programmer: Alex Shaw
+
+TRAINING
+Using random seed = 2018-10-03 16:36:53.182115
+Using learning rate eta = 8e-05
+After 5000 iterations:
+Weights:
+w0 = 51.77587139269553
+w1 = 0.23122368238782154
+
+VALIDATION
+Sum-of-Squares Error = 16610.807193090106
