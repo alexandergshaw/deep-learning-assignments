@@ -13,8 +13,7 @@ def trainLinearLearner(learningRate, randomSeed):
     x = list()
     y = list()
 
-    # TODO: change numIterations back to 5000
-    numIterations = 2
+    numIterations = 5000
     minWeightValue = 0
     maxWeightValue = 100
     random.seed(randomSeed)
@@ -61,8 +60,6 @@ def validate(weightsList):
 
     return sse
 
-
-# TODO: REMOVE ALL NON-ESSENTAL LINES BELOW
 learningRate = 0.00008
 randomSeed = datetime.now()
 weightsList = trainLinearLearner(learningRate, randomSeed)
