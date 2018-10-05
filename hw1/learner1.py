@@ -24,35 +24,15 @@ def trainLinearLearner(learningRate, randomSeed):
         x.append(float(rowEntries[0]))
         y.append(float(rowEntries[1]))
 
-    # TODO: REMOVE TESTING CODE:
-    print(x)
-
-    testfile = open('testfile.txt', 'w+')
-
     for epoch in list(range(0, numIterations)):
-        testfile.write('\n-----------------EPOCH = ')
-        testfile.write(str(epoch))
-
         for i in list(range(0, len(x))):
             xi = int(x[i])
             yi = float(y[i])
-
             error = calculateError(w_0, w_1, xi, yi)
-
             w_0 = w_0 + (learningRate * error)
             w_1 = w_1 + (learningRate * error * xi)
-
             prediction = w_0 + (w_1 * xi)
 
-            testfile.write('\n------example number = ')
-            testfile.write(str(i))
-            testfile.write('\nError = y_i - (w_0 + (w_1 * xi)) = ' + str(yi) + ' - (' + str(prediction) + ') ')
-            testfile.write('\nyi = ' + str(yi))
-            testfile.write('\nprediction = ' + str(w_0 + (w_1 * xi)))
-            testfile.write('\nw_0 = ')
-            testfile.write(str(w_0))
-            testfile.write('\nw_1 = ')
-            testfile.write(str(w_1))
     return [w_0, w_1]
 
 def validate(weightsList):
@@ -66,7 +46,7 @@ def validate(weightsList):
     for row in file:
         rowEntries = row.split()
         x.append(rowEntries[0])
-        y.append(rowEntries[0])
+        y.append(rowEntries[1])
 
     for e in list(range(0, len(x))):
         x_e = float(x[e])
@@ -74,16 +54,12 @@ def validate(weightsList):
 
         yCap = w0 + (w1 * x_e)
         sse += (y_e - yCap)**2
-
     return sse
 
-learningRate = 0.000155
+learningRate = 0.00016
 randomSeed = int(round(time.time()))
 weightsList = trainLinearLearner(learningRate, randomSeed)
 sse = validate(weightsList)
-
-# TODO: REMOVE PRINT STATEMENT
-print(weightsList)
 
 outputFile = open('learner1output.txt', 'w+')
 outputFile.write('CS-5001: HW#1 ')
