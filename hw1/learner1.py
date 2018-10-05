@@ -1,10 +1,10 @@
 import random
-from datetime import datetime
+import time
 import math
 
 def calculateError(w_0, w_1, x_i, y_i):
     prediction = w_0 + (w_1 * x_i)
-    error = prediction - y_i
+    error = y_i - prediction
     return error
 
 def trainLinearLearner(learningRate, randomSeed):
@@ -22,7 +22,7 @@ def trainLinearLearner(learningRate, randomSeed):
     for row in file:
         rowEntries = row.split()
         x.append(float(rowEntries[0]))
-        y.append(float(rowEntries[0]))
+        y.append(float(rowEntries[1]))
 
     for epoch in list(range(1, numIterations + 1)):
         for i in list(range(0, len(x))):
@@ -59,7 +59,7 @@ def validate(weightsList):
     return sse
 
 learningRate = 0.00008
-randomSeed = datetime.now()
+randomSeed = int(round(time.time()))
 weightsList = trainLinearLearner(learningRate, randomSeed)
 sse = validate(weightsList)
 
