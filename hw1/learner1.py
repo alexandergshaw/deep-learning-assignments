@@ -6,10 +6,9 @@ def calculateError(w_0, w_1, x_i, y_i):
     prediction = w_0 + (w_1 * x_i)
     error = prediction - y_i
     return error
-    # TODO: REPLACE THIS ERROR FORMULA WITH THE ACTUAL ONE
 
 def trainLinearLearner(learningRate, randomSeed):
-    file = open('input/training_data.txt')
+    file = open('training_data.txt')
     x = list()
     y = list()
 
@@ -30,7 +29,6 @@ def trainLinearLearner(learningRate, randomSeed):
             xi = float(x[i])
             yi = float(y[i])
 
-            # TODO: ENSURE THAT THE WEIGHT CALCULATIONS HERE ARE CORRECT
             error = calculateError(w_0, w_1, xi, yi)
             w_0 = w_0 - (learningRate * error)
             w_1 = w_1 - (learningRate * error * xi)
@@ -39,7 +37,7 @@ def trainLinearLearner(learningRate, randomSeed):
     return [w_0, w_1]
 
 def validate(weightsList):
-    file = open('./input/validation_data.txt')
+    file = open('validation_data.txt')
     x = list()
     y = list()
     w0 = weightsList[0]
