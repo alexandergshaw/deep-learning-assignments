@@ -8,7 +8,7 @@ def calculateError(w_0, w_1, x_i, y_i):
     return error
 
 def trainLinearLearner(learningRate, randomSeed):
-    file = open('training_data.txt')
+    file = open('trashdata.txt')
     x = list()
     y = list()
 
@@ -24,20 +24,39 @@ def trainLinearLearner(learningRate, randomSeed):
         x.append(float(rowEntries[0]))
         y.append(float(rowEntries[1]))
 
-    for epoch in list(range(1, numIterations + 1)):
+    # TODO: REMOVE TESTING CODE:
+    print(x)
+
+    testfile = open('testfile.txt', 'w+')
+
+    for epoch in list(range(0, numIterations)):
+        testfile.write('\n-----------------EPOCH = ')
+        testfile.write(str(epoch))
+
         for i in list(range(0, len(x))):
-            xi = float(x[i])
+            xi = int(x[i])
             yi = float(y[i])
 
             error = calculateError(w_0, w_1, xi, yi)
-            w_0 = w_0 - (learningRate * error)
-            w_1 = w_1 - (learningRate * error * xi)
 
+            w_0 = w_0 + (learningRate * error)
+            w_1 = w_1 + (learningRate * error * xi)
 
+            prediction = w_0 + (w_1 * xi)
+
+            testfile.write('\n------example number = ')
+            testfile.write(str(i))
+            testfile.write('\nError = y_i - (w_0 + (w_1 * xi)) = ' + str(yi) + ' - (' + str(prediction) + ') ')
+            testfile.write('\nyi = ' + str(yi))
+            testfile.write('\nprediction = ' + str(w_0 + (w_1 * xi)))
+            testfile.write('\nw_0 = ')
+            testfile.write(str(w_0))
+            testfile.write('\nw_1 = ')
+            testfile.write(str(w_1))
     return [w_0, w_1]
 
 def validate(weightsList):
-    file = open('validation_data.txt')
+    file = open('moretrashdata.txt')
     x = list()
     y = list()
     w0 = weightsList[0]
@@ -58,10 +77,13 @@ def validate(weightsList):
 
     return sse
 
-learningRate = 0.00008
+learningRate = 0.000155
 randomSeed = int(round(time.time()))
 weightsList = trainLinearLearner(learningRate, randomSeed)
 sse = validate(weightsList)
+
+# TODO: REMOVE PRINT STATEMENT
+print(weightsList)
 
 outputFile = open('learner1output.txt', 'w+')
 outputFile.write('CS-5001: HW#1 ')
