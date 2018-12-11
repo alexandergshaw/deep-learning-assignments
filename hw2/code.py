@@ -933,6 +933,22 @@ map = {
     }
 }
 
+def probability(currentLocation, action, newLocation):
+    p = 0.09
+
+    if action == 'up' and currentLocation.columnNumber - newLocation.columnNumber == 1:
+        p = 0.82
+
+    elif action == 'down' and currentLocation.columnNumber - newLocation.columnNumber == -1:
+        p = 0.82
+
+    elif action == 'left' and currentLocation.rowNumber - newLocation.rowNumber == 1:
+        p = 0.82
+
+    elif action == 'right' and currentLocation.rowNumber - newLocation.rowNumber == -1:
+        p = 0.82
+
+    return p
 
 def valueIteration(iterationCount):
     temporaryValue = 0.0
