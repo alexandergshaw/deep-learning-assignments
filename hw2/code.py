@@ -1,4 +1,6 @@
+
 gamma = 0.8
+count = 0
 iterationCount = int(input('Enter No of Iterations: '))
 tileTypeRewards = {
     'wall': -1,
@@ -930,18 +932,38 @@ map = {
         },
     }
 }
-count = 0
+
 
 def valueIteration(iterationCount):
     temporaryValue = 0.0
+    rowCount = len(map.items())
+    columnCount = len(map['row 0'].items())
 
     for i in range(0, iterationCount):
-        for row in map.items():
-            print(row.items())
-            for tile in row:
-                print('tile')
-                # if tile['tileType'] != 'wall':
-                #     temporaryValue = 0.0
+        rows = map.items()
+
+        for row in rows:
+            rowNumber = row[0].split()[1]
+            tiles = row[1].items()
+
+            for tile in tiles:
+                columnNumber = tile[0].split()[1]
+                tileType = tile[1]['tileType']
+
+                if tileType != 'wall':
+                    temporaryValue = 0.0
+
+                    if rowNumber > 0:
+#                         todo: calculate up
+
+                    if rowNumber < 9:
+#                         todo: calculate down
+
+                    if columnNumber > 0:
+#                         todo: calculate left
+
+                    if columnNumber < 9:
+#                         todo: calculate right
 
 
 print('CS-5001: HW#2\n'
