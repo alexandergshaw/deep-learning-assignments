@@ -935,7 +935,7 @@ map = {
 
 def value(tile):
     v = 0.0
-    return max(tile['qValues'].items())
+    return max(tile['qValues'].values())
 
 
 def probability(currentLocation, action, newLocation):
@@ -985,6 +985,12 @@ def probability(currentLocation, action, newLocation):
 #
 #                     if columnNumber < 9:
 # #                         todo: calculate right
+
+
+# --------------------TEST---------------------
+# todo: remove below code when done testing
+
+# --------------------END-TEST---------------------
 
 
 print('CS-5001: HW#2\n'
