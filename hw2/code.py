@@ -2,6 +2,7 @@
 gamma = 0.8
 count = 0
 iterationCount = int(input('Enter No of Iterations: '))
+allActions = ['up', 'down', 'left', 'right']
 tileTypeRewards = {
     'wall': -1,
     'cake': 10,
@@ -933,6 +934,12 @@ map = {
     }
 }
 
+def getTileType(rowNumber, columnNumber):
+    rowKey = 'row ' + str(rowNumber)
+    columnKey = 'tile ' + str(columnNumber)
+
+    return map[rowKey][columnKey]['tileType']
+
 def value(tile):
     v = 0.0
     return max(tile['qValues'].values())
@@ -940,7 +947,6 @@ def value(tile):
 
 def probability(currentLocation, action, newLocation):
     p = 0.09
-
     if action == 'left' and currentLocation['columnNumber'] - newLocation['columnNumber'] == 1:
         p = 0.82
 
@@ -954,6 +960,62 @@ def probability(currentLocation, action, newLocation):
         p = 0.82
 
     return p
+
+
+# todo: test
+def reward(newLocation):
+    tileType = getTileType(newLocation['rowNumber'], newLocation['columnNumber'])
+    return tileTypeRewards[tileType]
+
+
+# todo: test
+def expectedReward(currentLocation, action):
+    res = 0.0
+
+    if 0 < currentLocation['rowNumber'] < 9 and 0 < currentLocation['columnNumber'] < 9:
+
+        possibleActions = allActions
+        reachableTiles = []
+
+        if action == 'up':
+            possibleActions.remove('down')
+        elif action == 'down':
+            possibleActions.remove('up')
+        elif action == 'left':
+            possibleActions.remove('right')
+        elif action == 'right':
+            possibleActions.remove('left')
+
+        for act in possibleActions:
+            if act == 'up':
+                newPosition = {
+                    'rowNumber': currentLocation['rowNumber'] - 1,
+                    'columnNumber': currentLocation['columnNumber']
+                }
+
+            elif act == 'down':
+                newPosition = {
+                    'rowNumber': currentLocation['rowNumber'] + 1,
+                    'columnNumber': currentLocation['columnNumber']
+                }
+
+            elif act == 'left':
+                newPosition = {
+                    'rowNumber': currentLocation['rowNumber'],
+                    'columnNumber': currentLocation['columnNumber'] - 1
+                }
+
+            elif act == 'right':
+                newPosition = {
+                    'rowNumber': currentLocation['rowNumber'],
+                    'columnNumber': currentLocation['columnNumber'] + 1
+                }
+            reachableTiles.append(newPosition)
+
+        for newLocation in reachableTiles:
+            #  todo: remove print lines when done testing
+            res += probability(currentLocation, action, newLocation) * reward(newLocation)
+        return res
 
 # def valueIteration(iterationCount):
 #     temporaryValue = 0.0
@@ -990,6 +1052,7 @@ def probability(currentLocation, action, newLocation):
 # --------------------TEST---------------------
 # todo: remove below code when done testing
 
+print('expected reward: ', expectedReward({'rowNumber': 8, 'columnNumber': 3}, 'up'))
 # --------------------END-TEST---------------------
 
 
