@@ -934,48 +934,11 @@ map = {
     }
 }
 
-def getTileType(rowNumber, columnNumber):
-    rowKey = 'row ' + str(rowNumber)
-    columnKey = 'tile ' + str(columnNumber)
-
-    return map[rowKey][columnKey]['tileType']
-
-def value(tile):
-    v = 0.0
-    return max(tile['qValues'].values())
-
-
-def probability(currentLocation, action, newLocation):
-    p = 0.09
-    if action == 'left' and currentLocation['columnNumber'] - newLocation['columnNumber'] == 1:
-        p = 0.82
-
-    elif action == 'right' and currentLocation['columnNumber'] - newLocation['columnNumber'] == -1:
-        p = 0.82
-
-    elif action == 'up' and currentLocation['rowNumber'] - newLocation['rowNumber'] == 1:
-        p = 0.82
-
-    elif action == 'down' and currentLocation['rowNumber'] - newLocation['rowNumber'] == -1:
-        p = 0.82
-
-    return p
-
-
-# todo: test
-def reward(newLocation):
-    tileType = getTileType(newLocation['rowNumber'], newLocation['columnNumber'])
-    return tileTypeRewards[tileType]
-
-
-# todo: test
-def expectedReward(currentLocation, action):
-    res = 0.0
+def getReachableTiles(currentLocation, action):
+    reachableTiles = []
 
     if 0 < currentLocation['rowNumber'] < 9 and 0 < currentLocation['columnNumber'] < 9:
-
         possibleActions = allActions
-        reachableTiles = []
 
         if action == 'up':
             possibleActions.remove('down')
@@ -1011,11 +974,49 @@ def expectedReward(currentLocation, action):
                     'columnNumber': currentLocation['columnNumber'] + 1
                 }
             reachableTiles.append(newPosition)
+    return reachableTiles
 
-        for newLocation in reachableTiles:
-            #  todo: remove print lines when done testing
-            res += probability(currentLocation, action, newLocation) * reward(newLocation)
-        return res
+
+def getTileType(rowNumber, columnNumber):
+    rowKey = 'row ' + str(rowNumber)
+    columnKey = 'tile ' + str(columnNumber)
+
+    return map[rowKey][columnKey]['tileType']
+
+def value(tile):
+    v = 0.0
+    return max(tile['qValues'].values())
+
+
+def probability(currentLocation, action, newLocation):
+    p = 0.09
+    if action == 'left' and currentLocation['columnNumber'] - newLocation['columnNumber'] == 1:
+        p = 0.82
+
+    elif action == 'right' and currentLocation['columnNumber'] - newLocation['columnNumber'] == -1:
+        p = 0.82
+
+    elif action == 'up' and currentLocation['rowNumber'] - newLocation['rowNumber'] == 1:
+        p = 0.82
+
+    elif action == 'down' and currentLocation['rowNumber'] - newLocation['rowNumber'] == -1:
+        p = 0.82
+
+    return p
+
+
+def reward(newLocation):
+    tileType = getTileType(newLocation['rowNumber'], newLocation['columnNumber'])
+    return tileTypeRewards[tileType]
+
+
+def expectedReward(currentLocation, action):
+    res = 0.0
+
+    for newLocation in getReachableTiles(currentLocation, action):
+        #  todo: remove print lines when done testing
+        res += probability(currentLocation, action, newLocation) * reward(newLocation)
+    return res
 
 # def valueIteration(iterationCount):
 #     temporaryValue = 0.0
@@ -1052,7 +1053,6 @@ def expectedReward(currentLocation, action):
 # --------------------TEST---------------------
 # todo: remove below code when done testing
 
-print('expected reward: ', expectedReward({'rowNumber': 8, 'columnNumber': 3}, 'up'))
 # --------------------END-TEST---------------------
 
 
