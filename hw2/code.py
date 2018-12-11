@@ -936,50 +936,50 @@ map = {
 def probability(currentLocation, action, newLocation):
     p = 0.09
 
-    if action == 'up' and currentLocation.columnNumber - newLocation.columnNumber == 1:
+    if action == 'left' and currentLocation['columnNumber'] - newLocation['columnNumber'] == 1:
         p = 0.82
 
-    elif action == 'down' and currentLocation.columnNumber - newLocation.columnNumber == -1:
+    elif action == 'right' and currentLocation['columnNumber'] - newLocation['columnNumber'] == -1:
         p = 0.82
 
-    elif action == 'left' and currentLocation.rowNumber - newLocation.rowNumber == 1:
+    elif action == 'up' and currentLocation['rowNumber'] - newLocation['rowNumber'] == 1:
         p = 0.82
 
-    elif action == 'right' and currentLocation.rowNumber - newLocation.rowNumber == -1:
+    elif action == 'down' and currentLocation['rowNumber'] - newLocation['rowNumber'] == -1:
         p = 0.82
 
     return p
 
-def valueIteration(iterationCount):
-    temporaryValue = 0.0
-    rowCount = len(map.items())
-    columnCount = len(map['row 0'].items())
-
-    for i in range(0, iterationCount):
-        rows = map.items()
-
-        for row in rows:
-            rowNumber = row[0].split()[1]
-            tiles = row[1].items()
-
-            for tile in tiles:
-                columnNumber = tile[0].split()[1]
-                tileType = tile[1]['tileType']
-
-                if tileType != 'wall':
-                    temporaryValue = 0.0
-
-                    if rowNumber > 0:
-#                         todo: calculate up
-
-                    if rowNumber < 9:
-#                         todo: calculate down
-
-                    if columnNumber > 0:
-#                         todo: calculate left
-
-                    if columnNumber < 9:
-#                         todo: calculate right
+# def valueIteration(iterationCount):
+#     temporaryValue = 0.0
+#     rowCount = len(map.items())
+#     columnCount = len(map['row 0'].items())
+#
+#     for i in range(0, iterationCount):
+#         rows = map.items()
+#
+#         for row in rows:
+#             rowNumber = row[0].split()[1]
+#             tiles = row[1].items()
+#
+#             for tile in tiles:
+#                 columnNumber = tile[0].split()[1]
+#                 tileType = tile[1]['tileType']
+#
+#                 if tileType != 'wall':
+#                     temporaryValue = 0.0
+#
+#                     if rowNumber > 0:
+# #                         todo: calculate up
+#
+#                     if rowNumber < 9:
+# #                         todo: calculate down
+#
+#                     if columnNumber > 0:
+# #                         todo: calculate left
+#
+#                     if columnNumber < 9:
+# #                         todo: calculate right
 
 
 print('CS-5001: HW#2\n'
@@ -987,10 +987,7 @@ print('CS-5001: HW#2\n'
       f'Discount Gamma = {gamma}')
 
 while iterationCount > 0:
-    # todo: remove below line when finished testing
-    # print(map.items())
-
-    valueIteration(iterationCount)
+    # valueIteration(iterationCount)
     count = count + iterationCount
 
     statusString = 'iteration' if (iterationCount < 2) else 'iterations'
