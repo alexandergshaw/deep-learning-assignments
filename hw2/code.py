@@ -933,6 +933,11 @@ map = {
     }
 }
 
+def value(tile):
+    v = 0.0
+    return max(tile['qValues'].items())
+
+
 def probability(currentLocation, action, newLocation):
     p = 0.09
 
