@@ -10,9 +10,102 @@ tileRewards = {
     'cake': 10,
     'donut': 3,
     'fire': -5,
-    'oni': -10
+    'oni': -10,
+    'unmarked': 0
 }
 map = {
+    'row 0': [
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+    ],
     'row 1': [
         {
             'tile': 'wall',
@@ -24,7 +117,7 @@ map = {
             }
         },
         {
-            'tile': 'wall',
+            'tile': 'unmarked',
             'qValues': {
                 'up': 0,
                 'down': 0,
@@ -33,7 +126,7 @@ map = {
             }
         },
         {
-            'tile': 'wall',
+            'tile': 'unmarked',
             'qValues': {
                 'up': 0,
                 'down': 0,
@@ -42,7 +135,7 @@ map = {
             }
         },
         {
-            'tile': 'wall',
+            'tile': 'unmarked',
             'qValues': {
                 'up': 0,
                 'down': 0,
@@ -51,7 +144,7 @@ map = {
             }
         },
         {
-            'tile': 'wall',
+            'tile': 'unmarked',
             'qValues': {
                 'up': 0,
                 'down': 0,
@@ -60,7 +153,7 @@ map = {
             }
         },
         {
-            'tile': 'wall',
+            'tile': 'unmarked',
             'qValues': {
                 'up': 0,
                 'down': 0,
@@ -69,7 +162,7 @@ map = {
             }
         },
         {
-            'tile': 'wall',
+            'tile': 'unmarked',
             'qValues': {
                 'up': 0,
                 'down': 0,
@@ -78,7 +171,7 @@ map = {
             }
         },
         {
-            'tile': 'wall',
+            'tile': 'unmarked',
             'qValues': {
                 'up': 0,
                 'down': 0,
@@ -87,7 +180,7 @@ map = {
             }
         },
         {
-            'tile': 'wall',
+            'tile': 'unmarked',
             'qValues': {
                 'up': 0,
                 'down': 0,
@@ -106,107 +199,6 @@ map = {
         },
     ],
     'row 2': [
-        {
-            'tile': 'wall',
-            'qValues': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        {
-            'tile': 'unmarked',
-            'qValues': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        {
-            'tile': 'unmarked',
-            'qValues': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        {
-            'tile': 'unmarked',
-            'qValues': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        {
-            'tile': 'unmarked',
-            'qValues': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        {
-            'tile': 'unmarked',
-            'qValues': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        {
-            'tile': 'unmarked',
-            'qValues': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        {
-            'tile': 'unmarked',
-            'qValues': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        {
-            'tile': 'unmarked',
-            'qValues': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        {
-            'tile': 'unmarked',
-            'qValues': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        {
-            'tile': 'wall',
-            'qValues': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-    ],
-    'row 3': [
         {
             'tile': 'wall',
             'qValues': {
@@ -289,15 +281,6 @@ map = {
             }
         },
         {
-            'tile': 'unmarked',
-            'qValues': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        {
             'tile': 'wall',
             'qValues': {
                 'up': 0,
@@ -307,7 +290,7 @@ map = {
             }
         },
     ],
-    'row 4': [
+    'row 3': [
         {
             'tile': 'wall',
             'qValues': {
@@ -399,7 +382,7 @@ map = {
             }
         },
     ],
-    'row 5': [
+    'row 4': [
         {
             'tile': 'wall',
             'qValues': {
@@ -491,7 +474,180 @@ map = {
             }
         },
     ],
+    'row 5': [
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+    ],
     'row 6': [
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'cake',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
         {
             'tile': 'wall',
             'qValues': {
@@ -512,6 +668,87 @@ map = {
                 'right': 0
             }
         },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'oni',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'wall',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
     ],
     'row 8': [
         {
@@ -523,8 +760,78 @@ map = {
                 'right': 0
             }
         },
-    ],
-    'row 9': [
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
+        {
+            'tile': 'unmarked',
+            'qValues': {
+                'up': 0,
+                'down': 0,
+                'left': 0,
+                'right': 0
+            }
+        },
         {
             'tile': 'wall',
             'qValues': {
@@ -535,7 +842,7 @@ map = {
             }
         },
     ],
-    'row 10': [
+    'row 9': [
         {
             'tile': 'wall',
             'qValues': {
@@ -628,9 +935,6 @@ map = {
         },
     ]
 }
-
-# store q value for every possible action
-# store map
 
 def valueIteration(iterationCount):
     temporaryValue = 0.0
