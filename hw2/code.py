@@ -1,3 +1,5 @@
+import copy
+
 
 gamma = 0.8
 count = 0
@@ -1018,40 +1020,47 @@ def expectedReward(currentLocation, action):
         res += probability(currentLocation, action, newLocation) * reward(newLocation)
     return res
 
-# def valueIteration(iterationCount):
-#     temporaryValue = 0.0
-#     rowCount = len(map.items())
-#     columnCount = len(map['row 0'].items())
-#
-#     for i in range(0, iterationCount):
-#         rows = map.items()
-#
-#         for row in rows:
-#             rowNumber = row[0].split()[1]
-#             tiles = row[1].items()
-#
-#             for tile in tiles:
-#                 columnNumber = tile[0].split()[1]
-#                 tileType = tile[1]['tileType']
-#
-#                 if tileType != 'wall':
-#                     temporaryValue = 0.0
-#
-#                     if rowNumber > 0:
-# #                         todo: calculate up
-#
-#                     if rowNumber < 9:
-# #                         todo: calculate down
-#
-#                     if columnNumber > 0:
-# #                         todo: calculate left
-#
-#                     if columnNumber < 9:
-# #                         todo: calculate right
+def valueIteration(iterationCount):
+    mapCopy = copy.deepcopy(map)
+    temporaryValue = 0.0
+    rowCount = len(map.items())
+    columnCount = len(map['row 0'].items())
+
+    for i in range(0, iterationCount):
+        rows = map.items()
+
+        for row in rows:
+            rowKey = row[0]
+            rowNumber = row[0].split()[1]
+            tiles = row[1].items()
+
+            for tile in tiles:
+                tileKey = tile[0]
+                columnNumber = tile[0].split()[1]
+                tileType = tile[1]['tileType']
+
+                currentLocation = {
+                    'columnNumber': columnNumber,
+                    'rowNumber': rowNumber
+                }
+
+                if tileType != 'wall':
+                    temporaryValue = 0.0
+
+                    for a in allActions:
+                        for newLocation in getReachableTiles(currentLocation, a):
+                            temporaryValue += probability(currentLocation, a, newLocation) * value(newLocation)
+                        mapCopy[rowKey][tileKey]['qValues'][a] = expectedReward(currentLocation, a) + gamma * temporaryValue
+
+                    map = mapCopy
+
 
 
 # --------------------TEST---------------------
 # todo: remove below code when done testing
+
+map['row 0']['tile 0']['qValues']['up'] = 1
+print(map['row 0']['tile 0']['qValues']['up'])
 
 # --------------------END-TEST---------------------
 
