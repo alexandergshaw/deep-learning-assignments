@@ -944,13 +944,13 @@ def getReachableTiles(currentLocation, action):
     if 0 < rowNumber < 9 and 0 < columnNumber < 9:
         possibleActions = allActions
 
-        if action == 'up':
+        if action == 'up' and 'down' in possibleActions:
             possibleActions.remove('down')
-        elif action == 'down':
+        elif action == 'down' and 'up' in possibleActions:
             possibleActions.remove('up')
-        elif action == 'left':
+        elif action == 'left' and 'right' in possibleActions:
             possibleActions.remove('right')
-        elif action == 'right':
+        elif action == 'right' and 'left' in possibleActions:
             possibleActions.remove('left')
 
         for act in possibleActions:
@@ -993,7 +993,6 @@ def getTileQValues(rowNumber, columnNumber):
 
 def value(tile):
     v = 0.0
-    print('tile: ', tile)
     return max(getTileQValues(tile['rowNumber'], tile['columnNumber']))
 
 
@@ -1065,10 +1064,39 @@ def valueIteration(iterationCount, map):
                     map = mapCopy
 
 
+def printValues(map):
+    print('+--------+--------+--------+--------+--------+--------+--------+--------+')
+    for row in map:
+        if row != 'row 0' and row != 'row 9':
+            rowString = '| '
+            tiles = map[row]
+            for tile in tiles:
+                position = tiles[tile]
+                if tile != 'tile 0' and tile != 'tile 9':
+                    if position['tileType'] == 'unmarked':
+                        qValues = list(position['qValues'].values())
+                        val = ' %.3f' % max(qValues)
+                    elif position['tileType'] == 'wall':
+                        val = 'XXXXXX'
+                    else:
+                        val = position['tileType'].upper()
+                        cellCharacterCount = 6
+                        numSpacesNeeded = cellCharacterCount - len(val)
+
+                        spaces = ''
+                        for i in range(0, numSpacesNeeded):
+                            spaces += ' '
+
+                        val = spaces + val
+
+                    rowString += val + ' | '
+            print(rowString)
+    print('+--------+--------+--------+--------+--------+--------+--------+--------+')
+
 
 # --------------------TEST---------------------
 # todo: remove below code when done testing
-print(getTileQValues(1,1))
+printValues(map)
 # --------------------END-TEST---------------------
 
 
