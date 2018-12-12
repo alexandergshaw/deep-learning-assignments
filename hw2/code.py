@@ -984,12 +984,17 @@ def getReachableTiles(currentLocation, action):
 def getTileType(rowNumber, columnNumber):
     rowKey = 'row ' + str(rowNumber)
     columnKey = 'tile ' + str(columnNumber)
-
     return map[rowKey][columnKey]['tileType']
+
+def getTileQValues(rowNumber, columnNumber):
+    rowKey = 'row ' + str(rowNumber)
+    columnKey = 'tile ' + str(columnNumber)
+    return list(map[rowKey][columnKey]['qValues'].values())
 
 def value(tile):
     v = 0.0
-    return max(tile['qValues'].values())
+    print('tile: ', tile)
+    return max(getTileQValues(tile['rowNumber'], tile['columnNumber']))
 
 
 def probability(currentLocation, action, newLocation):
@@ -1022,9 +1027,6 @@ def reward(newLocation):
 
 def expectedReward(currentLocation, action):
     res = 0.0
-
-    #  todo: remove print lines when done testing
-    print('currentLocation: ', currentLocation)
 
     for newLocation in getReachableTiles(currentLocation, action):
 
@@ -1066,7 +1068,7 @@ def valueIteration(iterationCount, map):
 
 # --------------------TEST---------------------
 # todo: remove below code when done testing
-
+print(getTileQValues(1,1))
 # --------------------END-TEST---------------------
 
 
