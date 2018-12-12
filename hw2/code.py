@@ -2,6 +2,9 @@ import copy
 
 gamma = 0.8
 totalIterationCount = 0
+print('CS-5001: HW#2\n'
+      'Programmer: Alex Shaw\n'
+      f'Discount Gamma = {gamma}\n')
 iterationCount = int(input('Enter No of Iterations: '))
 allActions = ['up', 'down', 'left', 'right']
 tileTypeRewards = {
@@ -945,7 +948,7 @@ def getReachableTiles(currentLocation, action):
     columnNumber = int(currentLocation['columnNumber'])
 
     if 0 < rowNumber < 9 and 0 < columnNumber < 9:
-        possibleActions = allActions
+        possibleActions = copy.copy(allActions)
 
         if action == 'up' and 'down' in possibleActions:
             possibleActions.remove('down')
@@ -997,7 +1000,11 @@ def getTileQValues(rowNumber, columnNumber):
 
 
 def value(tile):
-    return max(getTileQValues(tile['rowNumber'], tile['columnNumber']))
+    v = max(getTileQValues(tile['rowNumber'], tile['columnNumber']))
+    if v > 0.0:
+        return v
+    else:
+        return 0.0
 
 
 def probability(currentLocation, action, newLocation):
@@ -1036,8 +1043,8 @@ def expectedReward(currentLocation, action):
           'in expectedReward()')
     for newLocation in getReachableTiles(currentLocation, action):
         # todo: remove when done testing
-        if reward(newLocation) == -1:
-            print('reward(wall) = ', reward(newLocation))
+        # if reward(newLocation) == -1:
+        #     print('reward(wall) = ', reward(newLocation))
 
         res += probability(currentLocation, action, newLocation) * reward(newLocation)
 
@@ -1045,10 +1052,10 @@ def expectedReward(currentLocation, action):
     return res
 
 
-def valueIteration(iterationCount, tileMap):
-    tileMapCopy = copy.deepcopy(tileMap)
-
+def valueIteration(iterationCount):
+    global tileMap
     for i in range(0, iterationCount):
+        tileMapCopy = copy.deepcopy(tileMap)
         rows = tileMap.items()
 
         for row in rows:
@@ -1066,12 +1073,12 @@ def valueIteration(iterationCount, tileMap):
                     'rowNumber': rowNumber
                 }
 
-                if tileType != 'wall':
-                    temporaryValue = 0.0
+                if tileType == 'unmarked':
                     for a in allActions:
+                        temporaryValue = 0.0
                         for newLocation in getReachableTiles(currentLocation, a):
                             # todo: remove print statement when done testing
-                            if a == 'up' and currentLocation['columnNumber'] == '1' and currentLocation['rowNumber'] == '1':
+                            if a == 'up' and currentLocation['columnNumber'] == '2' and currentLocation['rowNumber'] == '7':
                                 print('---------')
                                 print('true')
                                 print('probability(currentLocation, a, newLocation) = ', probability(currentLocation, a, newLocation))
@@ -1081,8 +1088,8 @@ def valueIteration(iterationCount, tileMap):
                                 print('newLocation = ', newLocation)
                             temporaryValue += probability(currentLocation, a, newLocation) * value(newLocation)
                         tileMapCopy[rowKey][tileKey]['qValues'][a] = expectedReward(currentLocation, a) + gamma * temporaryValue
-                    tileMap = tileMapCopy
-    return tileMap
+        tileMap = tileMapCopy
+    return
 
 
 def printValues(tileMap):
@@ -1171,12 +1178,9 @@ def printPolicy(tileMap):
 # --------------------END-TEST---------------------
 
 
-print('CS-5001: HW#2\n'
-      'Programmer: Alex Shaw\n'
-      f'Discount Gamma = {gamma}')
 
 while iterationCount > 0:
-    tileMap = valueIteration(iterationCount, tileMap)
+    valueIteration(iterationCount)
     totalIterationCount = totalIterationCount + iterationCount
 
     statusString = 'iteration' if (totalIterationCount < 2) else 'iterations'
@@ -1187,7 +1191,6 @@ while iterationCount > 0:
 
 print('Policy: ')
 printPolicy(tileMap)
-
 
 
 
