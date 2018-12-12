@@ -939,10 +939,6 @@ tileMap = {
 }
 
 def getReachableTiles(currentLocation, action):
-    # todo: remove print statments when done testing
-    if currentLocation['rowNumber'] == 1 and currentLocation['columnNumber'] == 1:
-        print('in getReachableTiles()')
-
     reachableTiles = []
     rowNumber = int(currentLocation['rowNumber'])
     columnNumber = int(currentLocation['columnNumber'])
@@ -1037,18 +1033,8 @@ def reward(newLocation):
 
 def expectedReward(currentLocation, action):
     res = 0.0
-
-    # todo: remove when finished testing
-    print('------'
-          'in expectedReward()')
     for newLocation in getReachableTiles(currentLocation, action):
-        # todo: remove when done testing
-        # if reward(newLocation) == -1:
-        #     print('reward(wall) = ', reward(newLocation))
-
         res += probability(currentLocation, action, newLocation) * reward(newLocation)
-
-    print('res = ', res)
     return res
 
 
@@ -1077,15 +1063,6 @@ def valueIteration(iterationCount):
                     for a in allActions:
                         temporaryValue = 0.0
                         for newLocation in getReachableTiles(currentLocation, a):
-                            # todo: remove print statement when done testing
-                            if a == 'up' and currentLocation['columnNumber'] == '2' and currentLocation['rowNumber'] == '7':
-                                print('---------')
-                                print('true')
-                                print('probability(currentLocation, a, newLocation) = ', probability(currentLocation, a, newLocation))
-                                print('value(newLocation) = ', value(newLocation))
-                                print('currentLocation = ', currentLocation)
-                                print('action = ', a)
-                                print('newLocation = ', newLocation)
                             temporaryValue += probability(currentLocation, a, newLocation) * value(newLocation)
                         tileMapCopy[rowKey][tileKey]['qValues'][a] = expectedReward(currentLocation, a) + gamma * temporaryValue
         tileMap = tileMapCopy
@@ -1172,19 +1149,12 @@ def printPolicy(tileMap):
     print('+--------+--------+--------+--------+--------+--------+--------+--------+')
 
 
-# --------------------TEST---------------------
-# todo: remove below code when done testing
-
-# --------------------END-TEST---------------------
-
-
-
 while iterationCount > 0:
     valueIteration(iterationCount)
     totalIterationCount = totalIterationCount + iterationCount
 
     statusString = 'iteration' if (totalIterationCount < 2) else 'iterations'
-    print(f'Values after {totalIterationCount} {statusString}:' )
+    print(f'Values after {totalIterationCount} {statusString}:')
     printValues(tileMap)
 
     iterationCount = int(input('Enter No of Iterations: '))
