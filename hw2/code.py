@@ -1,5 +1,4 @@
 import copy
-import operator
 
 gamma = 0.8
 totalIterationCount = 0
@@ -937,6 +936,10 @@ tileMap = {
 }
 
 def getReachableTiles(currentLocation, action):
+    # todo: remove print statments when done testing
+    if currentLocation['rowNumber'] == 1 and currentLocation['columnNumber'] == 1:
+        print('in getReachableTiles()')
+
     reachableTiles = []
     rowNumber = int(currentLocation['rowNumber'])
     columnNumber = int(currentLocation['columnNumber'])
@@ -994,7 +997,6 @@ def getTileQValues(rowNumber, columnNumber):
 
 
 def value(tile):
-    v = 0.0
     return max(getTileQValues(tile['rowNumber'], tile['columnNumber']))
 
 
@@ -1029,15 +1031,22 @@ def reward(newLocation):
 def expectedReward(currentLocation, action):
     res = 0.0
 
+    # todo: remove when finished testing
+    print('------'
+          'in expectedReward()')
     for newLocation in getReachableTiles(currentLocation, action):
+        # todo: remove when done testing
+        if reward(newLocation) == -1:
+            print('reward(wall) = ', reward(newLocation))
 
         res += probability(currentLocation, action, newLocation) * reward(newLocation)
+
+    print('res = ', res)
     return res
 
 
 def valueIteration(iterationCount, tileMap):
     tileMapCopy = copy.deepcopy(tileMap)
-    temporaryValue = 0.0
 
     for i in range(0, iterationCount):
         rows = tileMap.items()
@@ -1059,9 +1068,17 @@ def valueIteration(iterationCount, tileMap):
 
                 if tileType != 'wall':
                     temporaryValue = 0.0
-
                     for a in allActions:
                         for newLocation in getReachableTiles(currentLocation, a):
+                            # todo: remove print statement when done testing
+                            if a == 'up' and currentLocation['columnNumber'] == '1' and currentLocation['rowNumber'] == '1':
+                                print('---------')
+                                print('true')
+                                print('probability(currentLocation, a, newLocation) = ', probability(currentLocation, a, newLocation))
+                                print('value(newLocation) = ', value(newLocation))
+                                print('currentLocation = ', currentLocation)
+                                print('action = ', a)
+                                print('newLocation = ', newLocation)
                             temporaryValue += probability(currentLocation, a, newLocation) * value(newLocation)
                         tileMapCopy[rowKey][tileKey]['qValues'][a] = expectedReward(currentLocation, a) + gamma * temporaryValue
                     tileMap = tileMapCopy
