@@ -1112,9 +1112,9 @@ def printPolicy(tileMap):
                     if position['tileType'] == 'unmarked':
                         qValues = position['qValues']
                         direction = max(qValues, key=lambda key: qValues[key])
-                        qValue = int(qValues[direction])
+                        qValue = float(qValues[direction])
 
-                        if qValue == 0:
+                        if qValue == 0.000:
                             val = 'N/A'
 
                         elif direction == 'up':
