@@ -938,8 +938,10 @@ map = {
 
 def getReachableTiles(currentLocation, action):
     reachableTiles = []
+    rowNumber = int(currentLocation['rowNumber'])
+    columnNumber = int(currentLocation['columnNumber'])
 
-    if 0 < currentLocation['rowNumber'] < 9 and 0 < currentLocation['columnNumber'] < 9:
+    if 0 < rowNumber < 9 and 0 < columnNumber < 9:
         possibleActions = allActions
 
         if action == 'up':
@@ -954,26 +956,26 @@ def getReachableTiles(currentLocation, action):
         for act in possibleActions:
             if act == 'up':
                 newPosition = {
-                    'rowNumber': currentLocation['rowNumber'] - 1,
-                    'columnNumber': currentLocation['columnNumber']
+                    'rowNumber': rowNumber - 1,
+                    'columnNumber': columnNumber
                 }
 
             elif act == 'down':
                 newPosition = {
-                    'rowNumber': currentLocation['rowNumber'] + 1,
-                    'columnNumber': currentLocation['columnNumber']
+                    'rowNumber': rowNumber + 1,
+                    'columnNumber': columnNumber
                 }
 
             elif act == 'left':
                 newPosition = {
-                    'rowNumber': currentLocation['rowNumber'],
-                    'columnNumber': currentLocation['columnNumber'] - 1
+                    'rowNumber': rowNumber,
+                    'columnNumber': columnNumber - 1
                 }
 
             elif act == 'right':
                 newPosition = {
-                    'rowNumber': currentLocation['rowNumber'],
-                    'columnNumber': currentLocation['columnNumber'] + 1
+                    'rowNumber': rowNumber,
+                    'columnNumber': columnNumber + 1
                 }
             reachableTiles.append(newPosition)
     return reachableTiles
@@ -992,16 +994,22 @@ def value(tile):
 
 def probability(currentLocation, action, newLocation):
     p = 0.09
-    if action == 'left' and currentLocation['columnNumber'] - newLocation['columnNumber'] == 1:
+
+    currentRowNumber = int(currentLocation['rowNumber'])
+    currentColumnNumber = int(currentLocation['columnNumber'])
+    newRowNumber = int(newLocation['rowNumber'])
+    newColumnNumber = int(newLocation['columnNumber'])
+
+    if action == 'left' and currentColumnNumber - newColumnNumber == 1:
         p = 0.82
 
-    elif action == 'right' and currentLocation['columnNumber'] - newLocation['columnNumber'] == -1:
+    elif action == 'right' and currentColumnNumber - newColumnNumber == -1:
         p = 0.82
 
-    elif action == 'up' and currentLocation['rowNumber'] - newLocation['rowNumber'] == 1:
+    elif action == 'up' and currentRowNumber - newRowNumber == 1:
         p = 0.82
 
-    elif action == 'down' and currentLocation['rowNumber'] - newLocation['rowNumber'] == -1:
+    elif action == 'down' and currentRowNumber - newRowNumber == -1:
         p = 0.82
 
     return p
@@ -1015,16 +1023,17 @@ def reward(newLocation):
 def expectedReward(currentLocation, action):
     res = 0.0
 
+    #  todo: remove print lines when done testing
+    print('currentLocation: ', currentLocation)
+
     for newLocation in getReachableTiles(currentLocation, action):
-        #  todo: remove print lines when done testing
+
         res += probability(currentLocation, action, newLocation) * reward(newLocation)
     return res
 
-def valueIteration(iterationCount):
+def valueIteration(iterationCount, map):
     mapCopy = copy.deepcopy(map)
     temporaryValue = 0.0
-    rowCount = len(map.items())
-    columnCount = len(map['row 0'].items())
 
     for i in range(0, iterationCount):
         rows = map.items()
@@ -1051,16 +1060,12 @@ def valueIteration(iterationCount):
                         for newLocation in getReachableTiles(currentLocation, a):
                             temporaryValue += probability(currentLocation, a, newLocation) * value(newLocation)
                         mapCopy[rowKey][tileKey]['qValues'][a] = expectedReward(currentLocation, a) + gamma * temporaryValue
-
                     map = mapCopy
 
 
 
 # --------------------TEST---------------------
 # todo: remove below code when done testing
-
-map['row 0']['tile 0']['qValues']['up'] = 1
-print(map['row 0']['tile 0']['qValues']['up'])
 
 # --------------------END-TEST---------------------
 
@@ -1070,7 +1075,7 @@ print('CS-5001: HW#2\n'
       f'Discount Gamma = {gamma}')
 
 while iterationCount > 0:
-    # valueIteration(iterationCount)
+    valueIteration(iterationCount, map)
     count = count + iterationCount
 
     statusString = 'iteration' if (iterationCount < 2) else 'iterations'
@@ -1079,7 +1084,7 @@ while iterationCount > 0:
 
     iterationCount = int(input('Enter No of Iterations: '))
 
-# print policy
+    # print policy
 
 
 
