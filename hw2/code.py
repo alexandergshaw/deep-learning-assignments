@@ -986,10 +986,12 @@ def getTileType(rowNumber, columnNumber):
     columnKey = 'tile ' + str(columnNumber)
     return tileMap[rowKey][columnKey]['tileType']
 
+
 def getTileQValues(rowNumber, columnNumber):
     rowKey = 'row ' + str(rowNumber)
     columnKey = 'tile ' + str(columnNumber)
     return list(tileMap[rowKey][columnKey]['qValues'].values())
+
 
 def value(tile):
     v = 0.0
@@ -1031,6 +1033,7 @@ def expectedReward(currentLocation, action):
 
         res += probability(currentLocation, action, newLocation) * reward(newLocation)
     return res
+
 
 def valueIteration(iterationCount, tileMap):
     tileMapCopy = copy.deepcopy(tileMap)
@@ -1095,6 +1098,7 @@ def printValues(tileMap):
             print(rowString)
     print('+--------+--------+--------+--------+--------+--------+--------+--------+')
 
+
 def printPolicy(tileMap):
     print('+--------+--------+--------+--------+--------+--------+--------+--------+')
     for row in tileMap:
@@ -1146,12 +1150,6 @@ def printPolicy(tileMap):
 
 # --------------------TEST---------------------
 # todo: remove below code when done testing
-qValues = tileMap['row 1']['tile 1']['qValues']
-direction = max(qValues, key=lambda key: qValues[key])
-print(qValues)
-print(direction)
-qValue = qValues[direction]
-
 
 # --------------------END-TEST---------------------
 
