@@ -5,13 +5,13 @@
 
 import copy
 
-gamma = 0.8
-totalIterationCount = 0
 print('CS-5001: HW#2\n'
       'Programmer: Alex Shaw\n'
       f'Discount Gamma = {gamma}\n')
-iterationCount = int(input('Enter No of Iterations: '))
 
+iterationCount = int(input('Enter No of Iterations: '))
+gamma = 0.8
+totalIterationCount = 0
 allActions = ['up', 'down', 'left', 'right']
 tileTypeRewards = {
     'wall': -1,
@@ -990,16 +990,16 @@ def get_reachable_tiles(current_location, action):
     return reachable_tiles
 
 
-def getTileType(row_number, column_number):
-    rowKey = 'row ' + str(row_number)
-    columnKey = 'tile ' + str(column_number)
-    return tileMap[rowKey][columnKey]['tileType']
+def get_tile_type(row_number, column_number):
+    row_key = 'row ' + str(row_number)
+    column_key = 'tile ' + str(column_number)
+    return tileMap[row_key][column_key]['tileType']
 
 
 def getTileQValues(row_number, column_number):
-    rowKey = 'row ' + str(row_number)
-    columnKey = 'tile ' + str(column_number)
-    return list(tileMap[rowKey][columnKey]['qValues'].values())
+    row_key = 'row ' + str(row_number)
+    column_key = 'tile ' + str(column_number)
+    return list(tileMap[row_key][column_key]['qValues'].values())
 
 
 def value(tile):
@@ -1034,7 +1034,7 @@ def probability(current_location, action, newLocation):
 
 
 def reward(newLocation):
-    tileType = getTileType(newLocation['row_number'], newLocation['column_number'])
+    tileType = get_tile_type(newLocation['row_number'], newLocation['column_number'])
     return tileTypeRewards[tileType]
 
 
@@ -1052,7 +1052,7 @@ def valueIteration(iterationCount):
         rows = tileMap.items()
 
         for row in rows:
-            rowKey = row[0]
+            row_key = row[0]
             row_number = row[0].split()[1]
             tiles = row[1].items()
 
@@ -1071,7 +1071,7 @@ def valueIteration(iterationCount):
                         temporaryValue = 0.0
                         for newLocation in get_reachable_tiles(current_location, a):
                             temporaryValue += probability(current_location, a, newLocation) * value(newLocation)
-                        tileMapCopy[rowKey][tileKey]['qValues'][a] = expectedReward(current_location, a) + gamma * temporaryValue
+                        tileMapCopy[row_key][tileKey]['qValues'][a] = expectedReward(current_location, a) + gamma * temporaryValue
         tileMap = tileMapCopy
     return
 
