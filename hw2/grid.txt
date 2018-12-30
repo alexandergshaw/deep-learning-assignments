@@ -1,0 +1,10 @@
+|   wall |       wall |       wall |       wall |        wall |        wall |        wall |        wall |        wall |   wall |
+|   wall | unoccupied | unoccupied | unoccupied |  unoccupied |  unoccupied |  unoccupied |  unoccupied |  unoccupied |   wall |
+|   wall | unoccupied | unoccupied | unoccupied |  unoccupied |       donut |  unoccupied |  unoccupied |  unoccupied |   wall |
+|   wall | unoccupied |       wall |       wall |  unoccupied |  unoccupied |  unoccupied |  unoccupied |  unoccupied |   wall |
+|   wall | unoccupied |       fire | unoccupied |  unoccupied |        wall |        wall |  unoccupied |  unoccupied |   wall |
+|   wall | unoccupied | unoccupied | unoccupied |  unoccupied |        wall |  unoccupied |  unoccupied |  unoccupied |   wall |
+|   wall | unoccupied | unoccupied |       wall |        wall |        wall |  unoccupied |        cake |  unoccupied |   wall |
+|   wall | unoccupied | unoccupied |        oni |  unoccupied |  unoccupied |  unoccupied |  unoccupied |  unoccupied |   wall |
+|   wall | unoccupied | unoccupied | unoccupied |  unoccupied |  unoccupied |  unoccupied |  unoccupied |  unoccupied |   wall |
+|   wall |       wall |       wall |       wall |        wall |        wall |        wall |        wall |        wall |   wall |
