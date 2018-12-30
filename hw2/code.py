@@ -1,5 +1,5 @@
 # ------------------------------ Homework 2: Implementing the Value Iteration Algorithm ------------------------------ #
-# Implement the value iteration algorithm to calculate the optimal policy to maximize the reward.
+# Implement the get_tile_value iteration algorithm to calculate the optimal policy to maximize the reward.
 #
 # Background story: Tinny Tim, the little orphan robot, lives in an abandoned basement in New New York City. Tinny
 # Tim's basement can be described as a 10x10 grid (see problem_description.pdf for a visual representation). Some of
@@ -16,9 +16,9 @@ gamma = 0.8
 print('CS-5001: HW#2\n'
       'Programmer: Alex Shaw\n'
       f'Discount Gamma = {gamma}\n')
-num_iterations = int(input('Enter number of iterations you would like to run value iteration for: '))
+num_iterations = int(input('Enter number of iterations you would like to run get_tile_value iteration for: '))
 total_num_iterations = 0
-all_possible_grid_movements = ['up', 'down', 'left', 'right']
+all_possible_movements = ['up', 'down', 'left', 'right']
 object_rewards = {
     'wall': -1,
     'cake': 10,
@@ -27,7 +27,7 @@ object_rewards = {
     'oni': -10,
     'unoccupied_tile': 0
 }
-tile_map = {
+grid_map = {
     'row 0': {
         'tile 0': {
             'object_occupying_tile': 'wall',
@@ -951,120 +951,121 @@ tile_map = {
 }
 
 
-def get_reachable_tiles(current_location, action):
+def get_reachable_tiles(current_location, movement):
     reachable_tiles = []
     row_number = int(current_location['row_number'])
     column_number = int(current_location['column_number'])
 
     if 0 < row_number < 9 and 0 < column_number < 9:
-        possible_actions = copy.copy(all_possible_grid_movements)
+        possible_movements = copy.copy(all_possible_movements)
 
-        if action == 'up' and 'down' in possible_actions:
-            possible_actions.remove('down')
-        elif action == 'down' and 'up' in possible_actions:
-            possible_actions.remove('up')
-        elif action == 'left' and 'right' in possible_actions:
-            possible_actions.remove('right')
-        elif action == 'right' and 'left' in possible_actions:
-            possible_actions.remove('left')
+        if movement == 'up' and 'down' in possible_movements:
+            possible_movements.remove('down')
+        elif movement == 'down' and 'up' in possible_movements:
+            possible_movements.remove('up')
+        elif movement == 'left' and 'right' in possible_movements:
+            possible_movements.remove('right')
+        elif movement == 'right' and 'left' in possible_movements:
+            possible_movements.remove('left')
 
-        for act in possible_actions:
-            if act == 'up':
-                new_position = {
+        for motion in possible_movements:
+            if motion == 'up':
+                tile = {
                     'row_number': row_number - 1,
                     'column_number': column_number
                 }
 
-            elif act == 'down':
-                new_position = {
+            elif motion == 'down':
+                tile = {
                     'row_number': row_number + 1,
                     'column_number': column_number
                 }
 
-            elif act == 'left':
-                new_position = {
+            elif motion == 'left':
+                tile = {
                     'row_number': row_number,
                     'column_number': column_number - 1
                 }
 
-            elif act == 'right':
-                new_position = {
+            elif motion == 'right':
+                tile = {
                     'row_number': row_number,
                     'column_number': column_number + 1
                 }
-            reachable_tiles.append(new_position)
+            reachable_tiles.append(tile)
     return reachable_tiles
 
 
-def get_tile_type(row_number, column_number):
+def get_object_occupying_tile(row_number, column_number):
     row_key = 'row ' + str(row_number)
     column_key = 'tile ' + str(column_number)
-    return tile_map[row_key][column_key]['object_occupying_tile']
+    return grid_map[row_key][column_key]['object_occupying_tile']
 
 
 def get_tile_q_values(row_number, column_number):
     row_key = 'row ' + str(row_number)
     column_key = 'tile ' + str(column_number)
-    return list(tile_map[row_key][column_key]['q_values'].values())
+    return list(grid_map[row_key][column_key]['q_values'].values())
 
 
-def value(tile):
-    val = max(get_tile_q_values(tile['row_number'], tile['column_number']))
-    if val > 0.0:
-        return val
+def get_tile_value(tile):
+    tile_value = max(get_tile_q_values(tile['row_number'], tile['column_number']))
+    if tile_value > 0.0:
+        return tile_value
     else:
         return 0.0
 
 
-def probability(current_location, action, new_location):
-    prob = 0.09
-
+def calculate_movement_probability(current_location, movement, new_location):
     current_row_number = int(current_location['row_number'])
     current_column_number = int(current_location['column_number'])
-    new_row_number = int(new_location['row_number'])
-    new_column_number = int(new_location['column_number'])
+    move_to_row_number = int(new_location['row_number'])
+    move_to_column_number = int(new_location['column_number'])
 
-    if action == 'left' and current_column_number - new_column_number == 1:
-        prob = 0.82
+    if movement == 'left' and current_column_number - move_to_column_number == 1:
+        probability = 0.82
 
-    elif action == 'right' and current_column_number - new_column_number == -1:
-        prob = 0.82
+    elif movement == 'right' and current_column_number - move_to_column_number == -1:
+        probability = 0.82
 
-    elif action == 'up' and current_row_number - new_row_number == 1:
-        prob = 0.82
+    elif movement == 'up' and current_row_number - move_to_row_number == 1:
+        probability = 0.82
 
-    elif action == 'down' and current_row_number - new_row_number == -1:
-        prob = 0.82
+    elif movement == 'down' and current_row_number - move_to_row_number == -1:
+        probability = 0.82
 
-    return prob
+    else:
+        probability = 0.09
+
+    return probability
 
 
-def reward(new_location):
-    object_occupying_tile = get_tile_type(new_location['row_number'], new_location['column_number'])
+def get_reward(new_location):
+    object_occupying_tile = get_object_occupying_tile(new_location['row_number'], new_location['column_number'])
     return object_rewards[object_occupying_tile]
 
 
-def expected_reward(current_location, action):
+def calculate_expected_reward(current_location, movement):
     res = 0.0
-    for new_location in get_reachable_tiles(current_location, action):
-        res += probability(current_location, action, new_location) * reward(new_location)
+    for new_location in get_reachable_tiles(current_location, movement):
+        res += calculate_movement_probability(current_location, movement, new_location) * get_reward(new_location)
     return res
 
 
-def value_iteration(num_iterations):
-    global tile_map
-    for i in range(0, num_iterations):
-        tile_map_copy = copy.deepcopy(tile_map)
-        rows = tile_map.items()
+def value_iteration(iterations):
+    global grid_map
+    for i in range(0, iterations):
+        grid_map_copy = copy.deepcopy(grid_map)
+        grid_rows = grid_map.items()
 
-        for row in rows:
+        for row in grid_rows:
             row_key = row[0]
-            row_number = row[0].split()[1]
-            tiles = row[1].items()
+            row_number = row_key.split()[1]
+            row_tiles = row[1].items()
 
-            for tile in tiles:
+            for tile in row_tiles:
                 tile_key = tile[0]
-                column_number = tile[0].split()[1]
+                column_number = tile_key.split()[1]
                 object_occupying_tile = tile[1]['object_occupying_tile']
 
                 current_location = {
@@ -1073,52 +1074,52 @@ def value_iteration(num_iterations):
                 }
 
                 if object_occupying_tile == 'unoccupied_tile':
-                    for a in all_possible_grid_movements:
-                        temporary_value = 0.0
-                        for new_location in get_reachable_tiles(current_location, a):
-                            temporary_value += probability(current_location, a, new_location) * value(new_location)
-                        tile_map_copy[row_key][tile_key]['q_values'][a] = expected_reward(current_location, a) + gamma * temporary_value
-        tile_map = tile_map_copy
+                    for movement in all_possible_movements:
+                        value = 0.0
+                        for new_location in get_reachable_tiles(current_location, movement):
+                            value += calculate_movement_probability(current_location, movement, new_location) * get_tile_value(new_location)
+                        grid_map_copy[row_key][tile_key]['q_values'][movement] = calculate_expected_reward(current_location, movement) + gamma * value
+        grid_map = grid_map_copy
     return
 
 
-def print_values(tile_map):
-    print('+--------+--------+--------+--------+--------+--------+--------+--------+')
-    for row in tile_map:
+def print_values(grid, grid_edge):
+    print(grid_edge)
+    for row in grid:
         if row != 'row 0' and row != 'row 9':
             row_string = '|'
-            tiles = tile_map[row]
+            tiles = grid[row]
             for tile in tiles:
                 position = tiles[tile]
                 if tile != 'tile 0' and tile != 'tile 9':
                     if position['object_occupying_tile'] == 'unoccupied_tile':
                         q_values = list(position['q_values'].values())
-                        val = ' %.3f' % max(q_values)
+                        tile_value = ' %.3f' % max(q_values)
                     elif position['object_occupying_tile'] == 'wall':
-                        val = 'XXXXXX'
+                        tile_value = 'XXXXXX'
                     else:
-                        val = position['object_occupying_tile'].upper()
+                        tile_value = position['object_occupying_tile'].upper()
 
-                    cell_character_count = 8
-                    num_spaces_needed = cell_character_count - len(val)
+                    num_characters_per_tile = 8
+                    num_leading_white_spaces = num_characters_per_tile - len(tile_value)
 
-                    spaces = ''
-                    for i in range(0, num_spaces_needed):
-                        spaces += ' '
+                    leading_white_space = ''
+                    for i in range(0, num_leading_white_spaces):
+                        leading_white_space += ' '
 
-                    val = spaces + val
+                    tile_characters = leading_white_space + tile_value
 
-                    row_string += val + '|'
+                    row_string += tile_characters + '|'
             print(row_string)
-    print('+--------+--------+--------+--------+--------+--------+--------+--------+')
+    print(grid_edge)
 
 
-def print_policy(tile_map):
-    print('+--------+--------+--------+--------+--------+--------+--------+--------+')
-    for row in tile_map:
+def print_policy(grid, grid_edge):
+    print(grid_edge)
+    for row in grid:
         if row != 'row 0' and row != 'row 9':
             row_string = '|'
-            tiles = tile_map[row]
+            tiles = grid[row]
             for tile in tiles:
                 position = tiles[tile]
                 if tile != 'tile 0' and tile != 'tile 9':
@@ -1128,39 +1129,41 @@ def print_policy(tile_map):
                         q_value = float(q_values[direction])
 
                         if q_value == 0.000:
-                            val = 'N/A'
+                            tile_value = 'N/A'
 
                         elif direction == 'up':
-                            val = '^'
+                            tile_value = '^'
 
                         elif direction == 'down':
-                            val = 'V'
+                            tile_value = 'V'
 
                         elif direction == 'left':
-                            val = '<'
+                            tile_value = '<'
 
                         elif direction == 'right':
-                            val = '>'
+                            tile_value = '>'
 
                     elif position['object_occupying_tile'] == 'wall':
-                        val = 'XXXXXX'
+                        tile_value = 'XXXXXX'
 
                     else:
-                        val = position['object_occupying_tile'].upper()
+                        tile_value = position['object_occupying_tile'].upper()
 
-                    cell_character_count = 7
-                    num_spaces_needed = cell_character_count - len(val)
+                    num_characters_per_tile = 7
+                    num_leading_white_spaces = num_characters_per_tile - len(tile_value)
 
-                    spaces = ''
-                    for i in range(0, num_spaces_needed):
-                        spaces += ' '
+                    leading_white_space = ''
+                    for i in range(0, num_leading_white_spaces):
+                        leading_white_space += ' '
 
-                    val = spaces + val
+                    tile_characters = leading_white_space + tile_value
 
-                    row_string += val + ' |'
+                    row_string += tile_characters + ' |'
             print(row_string)
-    print('+--------+--------+--------+--------+--------+--------+--------+--------+')
+    print(grid_edge)
 
+
+grid_edge = '+--------+--------+--------+--------+--------+--------+--------+--------+'
 
 while num_iterations > 0:
     value_iteration(num_iterations)
@@ -1168,12 +1171,12 @@ while num_iterations > 0:
 
     status_string = 'iteration' if (total_num_iterations < 2) else 'iterations'
     print(f'Values after {total_num_iterations} {status_string}:')
-    print_values(tile_map)
+    print_values(grid_map, grid_edge)
 
-    num_iterations = int(input('Enter number of additional iterations you would like to run value iteration for: '))
+    num_iterations = int(input('Enter number of additional iterations you would like to run get_tile_value iteration for: '))
 
 print('Policy: ')
-print_policy(tile_map)
+print_policy(grid_map, grid_edge)
 
 
 
