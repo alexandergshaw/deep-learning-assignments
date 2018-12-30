@@ -9,10 +9,10 @@ gamma = 0.8
 print('CS-5001: HW#2\n'
       'Programmer: Alex Shaw\n'
       f'Discount Gamma = {gamma}\n')
-iterationCount = int(input('Enter No of Iterations: '))
-totalIterationCount = 0
+iteration_count = int(input('Enter No of Iterations: '))
+total_iteration_count = 0
 allActions = ['up', 'down', 'left', 'right']
-tileTypeRewards = {
+tile_type_rewards = {
     'wall': -1,
     'cake': 10,
     'donut': 3,
@@ -1034,20 +1034,20 @@ def probability(current_location, action, new_location):
 
 def reward(new_location):
     tile_type = get_tile_type(new_location['row_number'], new_location['column_number'])
-    return tileTypeRewards[tile_type]
+    return tile_type_rewards[tile_type]
 
 
-def expectedReward(current_location, action):
+def expected_reward(current_location, action):
     res = 0.0
     for new_location in get_reachable_tiles(current_location, action):
         res += probability(current_location, action, new_location) * reward(new_location)
     return res
 
 
-def valueIteration(iterationCount):
+def value_iteration(iteration_count):
     global tile_map
-    for i in range(0, iterationCount):
-        tileMapCopy = copy.deepcopy(tile_map)
+    for i in range(0, iteration_count):
+        tile_map_copy = copy.deepcopy(tile_map)
         rows = tile_map.items()
 
         for row in rows:
@@ -1056,7 +1056,7 @@ def valueIteration(iterationCount):
             tiles = row[1].items()
 
             for tile in tiles:
-                tileKey = tile[0]
+                tile_key = tile[0]
                 column_number = tile[0].split()[1]
                 tile_type = tile[1]['tile_type']
 
@@ -1067,19 +1067,19 @@ def valueIteration(iterationCount):
 
                 if tile_type == 'unmarked':
                     for a in allActions:
-                        temporaryValue = 0.0
+                        temporary_value = 0.0
                         for new_location in get_reachable_tiles(current_location, a):
-                            temporaryValue += probability(current_location, a, new_location) * value(new_location)
-                        tileMapCopy[row_key][tileKey]['q_values'][a] = expectedReward(current_location, a) + gamma * temporaryValue
-        tile_map = tileMapCopy
+                            temporary_value += probability(current_location, a, new_location) * value(new_location)
+                        tile_map_copy[row_key][tile_key]['q_values'][a] = expected_reward(current_location, a) + gamma * temporary_value
+        tile_map = tile_map_copy
     return
 
 
-def printValues(tile_map):
+def print_values(tile_map):
     print('+--------+--------+--------+--------+--------+--------+--------+--------+')
     for row in tile_map:
         if row != 'row 0' and row != 'row 9':
-            rowString = '|'
+            row_string = '|'
             tiles = tile_map[row]
             for tile in tiles:
                 position = tiles[tile]
@@ -1092,25 +1092,25 @@ def printValues(tile_map):
                     else:
                         val = position['tile_type'].upper()
 
-                    cellCharacterCount = 8
-                    numSpacesNeeded = cellCharacterCount - len(val)
+                    cell_character_count = 8
+                    num_spaces_needed = cell_character_count - len(val)
 
                     spaces = ''
-                    for i in range(0, numSpacesNeeded):
+                    for i in range(0, num_spaces_needed):
                         spaces += ' '
 
                     val = spaces + val
 
-                    rowString += val + '|'
-            print(rowString)
+                    row_string += val + '|'
+            print(row_string)
     print('+--------+--------+--------+--------+--------+--------+--------+--------+')
 
 
-def printPolicy(tile_map):
+def print_policy(tile_map):
     print('+--------+--------+--------+--------+--------+--------+--------+--------+')
     for row in tile_map:
         if row != 'row 0' and row != 'row 9':
-            rowString = '|'
+            row_string = '|'
             tiles = tile_map[row]
             for tile in tiles:
                 position = tiles[tile]
@@ -1118,9 +1118,9 @@ def printPolicy(tile_map):
                     if position['tile_type'] == 'unmarked':
                         q_values = position['q_values']
                         direction = max(q_values, key=lambda key: q_values[key])
-                        qValue = float(q_values[direction])
+                        q_value = float(q_values[direction])
 
-                        if qValue == 0.000:
+                        if q_value == 0.000:
                             val = 'N/A'
 
                         elif direction == 'up':
@@ -1141,32 +1141,32 @@ def printPolicy(tile_map):
                     else:
                         val = position['tile_type'].upper()
 
-                    cellCharacterCount = 7
-                    numSpacesNeeded = cellCharacterCount - len(val)
+                    cell_character_count = 7
+                    num_spaces_needed = cell_character_count - len(val)
 
                     spaces = ''
-                    for i in range(0, numSpacesNeeded):
+                    for i in range(0, num_spaces_needed):
                         spaces += ' '
 
                     val = spaces + val
 
-                    rowString += val + ' |'
-            print(rowString)
+                    row_string += val + ' |'
+            print(row_string)
     print('+--------+--------+--------+--------+--------+--------+--------+--------+')
 
 
-while iterationCount > 0:
-    valueIteration(iterationCount)
-    totalIterationCount = totalIterationCount + iterationCount
+while iteration_count > 0:
+    value_iteration(iteration_count)
+    total_iteration_count = total_iteration_count + iteration_count
 
-    statusString = 'iteration' if (totalIterationCount < 2) else 'iterations'
-    print(f'Values after {totalIterationCount} {statusString}:')
-    printValues(tile_map)
+    status_string = 'iteration' if (total_iteration_count < 2) else 'iterations'
+    print(f'Values after {total_iteration_count} {status_string}:')
+    print_values(tile_map)
 
-    iterationCount = int(input('Enter No of Iterations: '))
+    iteration_count = int(input('Enter No of Iterations: '))
 
 print('Policy: ')
-printPolicy(tile_map)
+print_policy(tile_map)
 
 
 
