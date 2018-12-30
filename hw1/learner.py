@@ -2,7 +2,7 @@
 # Implement a linear learner using gradient descent, and perform regression on input data. Use Sum-of-Squares as the
 # error measurement for your learner.
 # 
-# Background story for the problem description: 
+# Background story:
 # The crew of Planet Express is currently engaged in the mining of a trash asteroid from full of remnants from the 
 # 20th century. The crew has collected data for several chunks of the asteroid:  their mass and the price they sell 
 # for. Help Planet Express make predictions about the selling price they can expect from newly mined asteroid chunks 
