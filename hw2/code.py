@@ -1,3 +1,8 @@
+# ------------------------------ Homework 2: Implementing the Value Iteration Algorithm ------------------------------ #
+# Implement the value iteration algorithm to calculate the optimal policy to maximize the reward.
+# Full problem description can be found in problem_description.pdf.
+# -------------------------------------------------------------------------------------------------------------------- #
+
 import copy
 
 gamma = 0.8
