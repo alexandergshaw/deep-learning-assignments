@@ -20,11 +20,11 @@ tileTypeRewards = {
     'oni': -10,
     'unmarked': 0
 }
-tileMap = {
+tile_map = {
     'row 0': {
         'tile 0': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -32,8 +32,8 @@ tileMap = {
             }
         },
         'tile 1': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -41,8 +41,8 @@ tileMap = {
             }
         },
         'tile 2': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -50,8 +50,8 @@ tileMap = {
             }
         },
         'tile 3': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -59,8 +59,8 @@ tileMap = {
             }
         },
         'tile 4': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -68,8 +68,8 @@ tileMap = {
             }
         },
         'tile 5': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -77,8 +77,8 @@ tileMap = {
             }
         },
         'tile 6': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -86,8 +86,8 @@ tileMap = {
             }
         },
         'tile 7': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -95,8 +95,8 @@ tileMap = {
             }
         },
         'tile 8': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -104,8 +104,8 @@ tileMap = {
             }
         },
         'tile 9': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -115,8 +115,8 @@ tileMap = {
     },
     'row 1': {
         'tile 0': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -124,8 +124,8 @@ tileMap = {
             }
         },
         'tile 1': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -133,8 +133,8 @@ tileMap = {
             }
         },
         'tile 2': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -142,8 +142,8 @@ tileMap = {
             }
         },
         'tile 3': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -151,8 +151,8 @@ tileMap = {
             }
         },
         'tile 4': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -160,8 +160,8 @@ tileMap = {
             }
         },
         'tile 5': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -169,8 +169,8 @@ tileMap = {
             }
         },
         'tile 6': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -178,8 +178,8 @@ tileMap = {
             }
         },
         'tile 7': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -187,8 +187,8 @@ tileMap = {
             }
         },
         'tile 8': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -196,8 +196,8 @@ tileMap = {
             }
         },
         'tile 9': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -207,8 +207,8 @@ tileMap = {
     },
     'row 2': {
         'tile 0': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -216,8 +216,8 @@ tileMap = {
             }
         },
         'tile 1': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -225,8 +225,8 @@ tileMap = {
             }
         },
         'tile 2': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -234,8 +234,8 @@ tileMap = {
             }
         },
         'tile 3': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -243,8 +243,8 @@ tileMap = {
             }
         },
         'tile 4': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -252,8 +252,8 @@ tileMap = {
             }
         },
         'tile 5': {
-            'tileType': 'donut',
-            'qValues': {
+            'tile_type': 'donut',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -261,8 +261,8 @@ tileMap = {
             }
         },
         'tile 6': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -270,8 +270,8 @@ tileMap = {
             }
         },
         'tile 7': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -279,8 +279,8 @@ tileMap = {
             }
         },
         'tile 8': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -288,8 +288,8 @@ tileMap = {
             }
         },
         'tile 9': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -299,8 +299,8 @@ tileMap = {
     },
     'row 3': {
         'tile 0': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -308,8 +308,8 @@ tileMap = {
             }
         },
         'tile 1': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -317,8 +317,8 @@ tileMap = {
             }
         },
         'tile 2': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -326,8 +326,8 @@ tileMap = {
             }
         },
         'tile 3': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -335,8 +335,8 @@ tileMap = {
             }
         },
         'tile 4': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -344,8 +344,8 @@ tileMap = {
             }
         },
         'tile 5': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -353,8 +353,8 @@ tileMap = {
             }
         },
         'tile 6': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -362,8 +362,8 @@ tileMap = {
             }
         },
         'tile 7': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -371,8 +371,8 @@ tileMap = {
             }
         },
         'tile 8': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -380,8 +380,8 @@ tileMap = {
             }
         },
         'tile 9': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -391,8 +391,8 @@ tileMap = {
     },
     'row 4': {
         'tile 0': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -400,8 +400,8 @@ tileMap = {
             }
         },
         'tile 1': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -409,8 +409,8 @@ tileMap = {
             }
         },
         'tile 2': {
-            'tileType': 'fire',
-            'qValues': {
+            'tile_type': 'fire',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -418,8 +418,8 @@ tileMap = {
             }
         },
         'tile 3': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -427,8 +427,8 @@ tileMap = {
             }
         },
         'tile 4': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -436,8 +436,8 @@ tileMap = {
             }
         },
         'tile 5': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -445,8 +445,8 @@ tileMap = {
             }
         },
         'tile 6': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -454,8 +454,8 @@ tileMap = {
             }
         },
         'tile 7': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -463,8 +463,8 @@ tileMap = {
             }
         },
         'tile 8': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -472,8 +472,8 @@ tileMap = {
             }
         },
         'tile 9': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -483,8 +483,8 @@ tileMap = {
     },
     'row 5': {
         'tile 0': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -492,8 +492,8 @@ tileMap = {
             }
         },
         'tile 1': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -501,8 +501,8 @@ tileMap = {
             }
         },
         'tile 2': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -510,8 +510,8 @@ tileMap = {
             }
         },
         'tile 3': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -519,8 +519,8 @@ tileMap = {
             }
         },
         'tile 4': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -528,8 +528,8 @@ tileMap = {
             }
         },
         'tile 5': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -537,8 +537,8 @@ tileMap = {
             }
         },
         'tile 6': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -546,8 +546,8 @@ tileMap = {
             }
         },
         'tile 7': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -555,8 +555,8 @@ tileMap = {
             }
         },
         'tile 8': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -564,8 +564,8 @@ tileMap = {
             }
         },
         'tile 9': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -575,8 +575,8 @@ tileMap = {
     },
     'row 6': {
         'tile 0': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -584,8 +584,8 @@ tileMap = {
             }
         },
         'tile 1': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -593,8 +593,8 @@ tileMap = {
             }
         },
         'tile 2': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -602,8 +602,8 @@ tileMap = {
             }
         },
         'tile 3': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -611,8 +611,8 @@ tileMap = {
             }
         },
         'tile 4': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -620,8 +620,8 @@ tileMap = {
             }
         },
         'tile 5': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -629,8 +629,8 @@ tileMap = {
             }
         },
         'tile 6': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -638,8 +638,8 @@ tileMap = {
             }
         },
         'tile 7': {
-            'tileType': 'cake',
-            'qValues': {
+            'tile_type': 'cake',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -647,8 +647,8 @@ tileMap = {
             }
         },
         'tile 8': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -656,8 +656,8 @@ tileMap = {
             }
         },
         'tile 9': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -667,8 +667,8 @@ tileMap = {
     },
     'row 7': {
         'tile 0': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -676,8 +676,8 @@ tileMap = {
             }
         },
         'tile 1': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -685,8 +685,8 @@ tileMap = {
             }
         },
         'tile 2': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -694,8 +694,8 @@ tileMap = {
             }
         },
         'tile 3': {
-            'tileType': 'oni',
-            'qValues': {
+            'tile_type': 'oni',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -703,8 +703,8 @@ tileMap = {
             }
         },
         'tile 4': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -712,8 +712,8 @@ tileMap = {
             }
         },
         'tile 5': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -721,8 +721,8 @@ tileMap = {
             }
         },
         'tile 6': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -730,8 +730,8 @@ tileMap = {
             }
         },
         'tile 7': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -739,8 +739,8 @@ tileMap = {
             }
         },
         'tile 8': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -748,8 +748,8 @@ tileMap = {
             }
         },
         'tile 9': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -759,8 +759,8 @@ tileMap = {
     },
     'row 8': {
         'tile 0': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -768,8 +768,8 @@ tileMap = {
             }
         },
         'tile 1': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -777,8 +777,8 @@ tileMap = {
             }
         },
         'tile 2': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -786,8 +786,8 @@ tileMap = {
             }
         },
         'tile 3': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -795,8 +795,8 @@ tileMap = {
             }
         },
         'tile 4': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -804,8 +804,8 @@ tileMap = {
             }
         },
         'tile 5': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -813,8 +813,8 @@ tileMap = {
             }
         },
         'tile 6': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -822,8 +822,8 @@ tileMap = {
             }
         },
         'tile 7': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -831,8 +831,8 @@ tileMap = {
             }
         },
         'tile 8': {
-            'tileType': 'unmarked',
-            'qValues': {
+            'tile_type': 'unmarked',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -840,8 +840,8 @@ tileMap = {
             }
         },
         'tile 9': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -851,8 +851,8 @@ tileMap = {
     },
     'row 9': {
         'tile 0': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -860,8 +860,8 @@ tileMap = {
             }
         },
         'tile 1': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -869,8 +869,8 @@ tileMap = {
             }
         },
         'tile 2': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -878,8 +878,8 @@ tileMap = {
             }
         },
         'tile 3': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -887,8 +887,8 @@ tileMap = {
             }
         },
         'tile 4': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -896,8 +896,8 @@ tileMap = {
             }
         },
         'tile 5': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -905,8 +905,8 @@ tileMap = {
             }
         },
         'tile 6': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -914,8 +914,8 @@ tileMap = {
             }
         },
         'tile 7': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -923,8 +923,8 @@ tileMap = {
             }
         },
         'tile 8': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -932,8 +932,8 @@ tileMap = {
             }
         },
         'tile 9': {
-            'tileType': 'wall',
-            'qValues': {
+            'tile_type': 'wall',
+            'q_values': {
                 'up': 0,
                 'down': 0,
                 'left': 0,
@@ -992,17 +992,17 @@ def get_reachable_tiles(current_location, action):
 def get_tile_type(row_number, column_number):
     row_key = 'row ' + str(row_number)
     column_key = 'tile ' + str(column_number)
-    return tileMap[row_key][column_key]['tileType']
+    return tile_map[row_key][column_key]['tile_type']
 
 
-def getTileQValues(row_number, column_number):
+def get_tile_q_values(row_number, column_number):
     row_key = 'row ' + str(row_number)
     column_key = 'tile ' + str(column_number)
-    return list(tileMap[row_key][column_key]['qValues'].values())
+    return list(tile_map[row_key][column_key]['q_values'].values())
 
 
 def value(tile):
-    v = max(getTileQValues(tile['row_number'], tile['column_number']))
+    v = max(get_tile_q_values(tile['row_number'], tile['column_number']))
     if v > 0.0:
         return v
     else:
@@ -1033,8 +1033,8 @@ def probability(current_location, action, newLocation):
 
 
 def reward(newLocation):
-    tileType = get_tile_type(newLocation['row_number'], newLocation['column_number'])
-    return tileTypeRewards[tileType]
+    tile_type = get_tile_type(newLocation['row_number'], newLocation['column_number'])
+    return tileTypeRewards[tile_type]
 
 
 def expectedReward(current_location, action):
@@ -1045,10 +1045,10 @@ def expectedReward(current_location, action):
 
 
 def valueIteration(iterationCount):
-    global tileMap
+    global tile_map
     for i in range(0, iterationCount):
-        tileMapCopy = copy.deepcopy(tileMap)
-        rows = tileMap.items()
+        tileMapCopy = copy.deepcopy(tile_map)
+        rows = tile_map.items()
 
         for row in rows:
             row_key = row[0]
@@ -1058,39 +1058,39 @@ def valueIteration(iterationCount):
             for tile in tiles:
                 tileKey = tile[0]
                 column_number = tile[0].split()[1]
-                tileType = tile[1]['tileType']
+                tile_type = tile[1]['tile_type']
 
                 current_location = {
                     'column_number': column_number,
                     'row_number': row_number
                 }
 
-                if tileType == 'unmarked':
+                if tile_type == 'unmarked':
                     for a in allActions:
                         temporaryValue = 0.0
                         for newLocation in get_reachable_tiles(current_location, a):
                             temporaryValue += probability(current_location, a, newLocation) * value(newLocation)
-                        tileMapCopy[row_key][tileKey]['qValues'][a] = expectedReward(current_location, a) + gamma * temporaryValue
-        tileMap = tileMapCopy
+                        tileMapCopy[row_key][tileKey]['q_values'][a] = expectedReward(current_location, a) + gamma * temporaryValue
+        tile_map = tileMapCopy
     return
 
 
-def printValues(tileMap):
+def printValues(tile_map):
     print('+--------+--------+--------+--------+--------+--------+--------+--------+')
-    for row in tileMap:
+    for row in tile_map:
         if row != 'row 0' and row != 'row 9':
             rowString = '|'
-            tiles = tileMap[row]
+            tiles = tile_map[row]
             for tile in tiles:
                 position = tiles[tile]
                 if tile != 'tile 0' and tile != 'tile 9':
-                    if position['tileType'] == 'unmarked':
-                        qValues = list(position['qValues'].values())
-                        val = ' %.3f' % max(qValues)
-                    elif position['tileType'] == 'wall':
+                    if position['tile_type'] == 'unmarked':
+                        q_values = list(position['q_values'].values())
+                        val = ' %.3f' % max(q_values)
+                    elif position['tile_type'] == 'wall':
                         val = 'XXXXXX'
                     else:
-                        val = position['tileType'].upper()
+                        val = position['tile_type'].upper()
 
                     cellCharacterCount = 8
                     numSpacesNeeded = cellCharacterCount - len(val)
@@ -1106,19 +1106,19 @@ def printValues(tileMap):
     print('+--------+--------+--------+--------+--------+--------+--------+--------+')
 
 
-def printPolicy(tileMap):
+def printPolicy(tile_map):
     print('+--------+--------+--------+--------+--------+--------+--------+--------+')
-    for row in tileMap:
+    for row in tile_map:
         if row != 'row 0' and row != 'row 9':
             rowString = '|'
-            tiles = tileMap[row]
+            tiles = tile_map[row]
             for tile in tiles:
                 position = tiles[tile]
                 if tile != 'tile 0' and tile != 'tile 9':
-                    if position['tileType'] == 'unmarked':
-                        qValues = position['qValues']
-                        direction = max(qValues, key=lambda key: qValues[key])
-                        qValue = float(qValues[direction])
+                    if position['tile_type'] == 'unmarked':
+                        q_values = position['q_values']
+                        direction = max(q_values, key=lambda key: q_values[key])
+                        qValue = float(q_values[direction])
 
                         if qValue == 0.000:
                             val = 'N/A'
@@ -1135,11 +1135,11 @@ def printPolicy(tileMap):
                         elif direction == 'right':
                             val = '>'
 
-                    elif position['tileType'] == 'wall':
+                    elif position['tile_type'] == 'wall':
                         val = 'XXXXXX'
 
                     else:
-                        val = position['tileType'].upper()
+                        val = position['tile_type'].upper()
 
                     cellCharacterCount = 7
                     numSpacesNeeded = cellCharacterCount - len(val)
@@ -1161,12 +1161,12 @@ while iterationCount > 0:
 
     statusString = 'iteration' if (totalIterationCount < 2) else 'iterations'
     print(f'Values after {totalIterationCount} {statusString}:')
-    printValues(tileMap)
+    printValues(tile_map)
 
     iterationCount = int(input('Enter No of Iterations: '))
 
 print('Policy: ')
-printPolicy(tileMap)
+printPolicy(tile_map)
 
 
 
