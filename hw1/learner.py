@@ -15,9 +15,9 @@ import random
 import time
 
 
-def calculate_delta(learner_weight0, learner_weight1, mass, actual_selling_price):
-    predicted_selling_price = learner_weight0 + (learner_weight1 * mass)
-    return predicted_selling_price - actual_selling_price
+def calculate_delta(weights_list, mass, actual_selling_price):
+    predicted_selling_price = weights_list[0] + (weights_list[1] * mass)
+    return actual_selling_price - predicted_selling_price
 
 
 def train_linear_learner(rate, seed):
@@ -44,8 +44,8 @@ def train_linear_learner(rate, seed):
             mass = int(asteroid_chunk_mass_list[entryNumber])
             selling_price = float(asteroid_chunk_selling_price_list[entryNumber])
             delta = calculate_delta(learner_weight_list, mass, selling_price)
-            learner_weight_list[0] = weight0 + (rate * delta)
-            learner_weight_list[1] = weight1 + (rate * delta * mass)
+            learner_weight_list[0] = learner_weight_list[0] + (rate * delta)
+            learner_weight_list[1] = learner_weight_list[1] + (rate * delta * mass)
 
     return learner_weight_list
 
