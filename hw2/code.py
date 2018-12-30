@@ -1002,45 +1002,45 @@ def get_tile_q_values(row_number, column_number):
 
 
 def value(tile):
-    v = max(get_tile_q_values(tile['row_number'], tile['column_number']))
-    if v > 0.0:
-        return v
+    val = max(get_tile_q_values(tile['row_number'], tile['column_number']))
+    if val > 0.0:
+        return val
     else:
         return 0.0
 
 
-def probability(current_location, action, newLocation):
-    p = 0.09
+def probability(current_location, action, new_location):
+    prob = 0.09
 
-    currentRowNumber = int(current_location['row_number'])
-    currentColumnNumber = int(current_location['column_number'])
-    newRowNumber = int(newLocation['row_number'])
-    newColumnNumber = int(newLocation['column_number'])
+    current_row_number = int(current_location['row_number'])
+    current_column_number = int(current_location['column_number'])
+    new_row_number = int(new_location['row_number'])
+    new_column_number = int(new_location['column_number'])
 
-    if action == 'left' and currentColumnNumber - newColumnNumber == 1:
-        p = 0.82
+    if action == 'left' and current_column_number - new_column_number == 1:
+        prob = 0.82
 
-    elif action == 'right' and currentColumnNumber - newColumnNumber == -1:
-        p = 0.82
+    elif action == 'right' and current_column_number - new_column_number == -1:
+        prob = 0.82
 
-    elif action == 'up' and currentRowNumber - newRowNumber == 1:
-        p = 0.82
+    elif action == 'up' and current_row_number - new_row_number == 1:
+        prob = 0.82
 
-    elif action == 'down' and currentRowNumber - newRowNumber == -1:
-        p = 0.82
+    elif action == 'down' and current_row_number - new_row_number == -1:
+        prob = 0.82
 
-    return p
+    return prob
 
 
-def reward(newLocation):
-    tile_type = get_tile_type(newLocation['row_number'], newLocation['column_number'])
+def reward(new_location):
+    tile_type = get_tile_type(new_location['row_number'], new_location['column_number'])
     return tileTypeRewards[tile_type]
 
 
 def expectedReward(current_location, action):
     res = 0.0
-    for newLocation in get_reachable_tiles(current_location, action):
-        res += probability(current_location, action, newLocation) * reward(newLocation)
+    for new_location in get_reachable_tiles(current_location, action):
+        res += probability(current_location, action, new_location) * reward(new_location)
     return res
 
 
@@ -1068,8 +1068,8 @@ def valueIteration(iterationCount):
                 if tile_type == 'unmarked':
                     for a in allActions:
                         temporaryValue = 0.0
-                        for newLocation in get_reachable_tiles(current_location, a):
-                            temporaryValue += probability(current_location, a, newLocation) * value(newLocation)
+                        for new_location in get_reachable_tiles(current_location, a):
+                            temporaryValue += probability(current_location, a, new_location) * value(new_location)
                         tileMapCopy[row_key][tileKey]['q_values'][a] = expectedReward(current_location, a) + gamma * temporaryValue
         tile_map = tileMapCopy
     return
