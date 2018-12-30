@@ -5,12 +5,11 @@
 
 import copy
 
+gamma = 0.8
 print('CS-5001: HW#2\n'
       'Programmer: Alex Shaw\n'
       f'Discount Gamma = {gamma}\n')
-
 iterationCount = int(input('Enter No of Iterations: '))
-gamma = 0.8
 totalIterationCount = 0
 allActions = ['up', 'down', 'left', 'right']
 tileTypeRewards = {
