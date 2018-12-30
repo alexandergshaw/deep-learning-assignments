@@ -11,6 +11,7 @@ print('CS-5001: HW#2\n'
       'Programmer: Alex Shaw\n'
       f'Discount Gamma = {gamma}\n')
 iterationCount = int(input('Enter No of Iterations: '))
+
 allActions = ['up', 'down', 'left', 'right']
 tileTypeRewards = {
     'wall': -1,
@@ -943,78 +944,79 @@ tileMap = {
     }
 }
 
-def getReachableTiles(currentLocation, action):
-    reachableTiles = []
-    rowNumber = int(currentLocation['rowNumber'])
-    columnNumber = int(currentLocation['columnNumber'])
 
-    if 0 < rowNumber < 9 and 0 < columnNumber < 9:
-        possibleActions = copy.copy(allActions)
+def get_reachable_tiles(current_location, action):
+    reachable_tiles = []
+    row_number = int(current_location['row_number'])
+    column_number = int(current_location['column_number'])
 
-        if action == 'up' and 'down' in possibleActions:
-            possibleActions.remove('down')
-        elif action == 'down' and 'up' in possibleActions:
-            possibleActions.remove('up')
-        elif action == 'left' and 'right' in possibleActions:
-            possibleActions.remove('right')
-        elif action == 'right' and 'left' in possibleActions:
-            possibleActions.remove('left')
+    if 0 < row_number < 9 and 0 < column_number < 9:
+        possible_actions = copy.copy(allActions)
 
-        for act in possibleActions:
+        if action == 'up' and 'down' in possible_actions:
+            possible_actions.remove('down')
+        elif action == 'down' and 'up' in possible_actions:
+            possible_actions.remove('up')
+        elif action == 'left' and 'right' in possible_actions:
+            possible_actions.remove('right')
+        elif action == 'right' and 'left' in possible_actions:
+            possible_actions.remove('left')
+
+        for act in possible_actions:
             if act == 'up':
-                newPosition = {
-                    'rowNumber': rowNumber - 1,
-                    'columnNumber': columnNumber
+                new_position = {
+                    'row_number': row_number - 1,
+                    'column_number': column_number
                 }
 
             elif act == 'down':
-                newPosition = {
-                    'rowNumber': rowNumber + 1,
-                    'columnNumber': columnNumber
+                new_position = {
+                    'row_number': row_number + 1,
+                    'column_number': column_number
                 }
 
             elif act == 'left':
-                newPosition = {
-                    'rowNumber': rowNumber,
-                    'columnNumber': columnNumber - 1
+                new_position = {
+                    'row_number': row_number,
+                    'column_number': column_number - 1
                 }
 
             elif act == 'right':
-                newPosition = {
-                    'rowNumber': rowNumber,
-                    'columnNumber': columnNumber + 1
+                new_position = {
+                    'row_number': row_number,
+                    'column_number': column_number + 1
                 }
-            reachableTiles.append(newPosition)
-    return reachableTiles
+            reachable_tiles.append(new_position)
+    return reachable_tiles
 
 
-def getTileType(rowNumber, columnNumber):
-    rowKey = 'row ' + str(rowNumber)
-    columnKey = 'tile ' + str(columnNumber)
+def getTileType(row_number, column_number):
+    rowKey = 'row ' + str(row_number)
+    columnKey = 'tile ' + str(column_number)
     return tileMap[rowKey][columnKey]['tileType']
 
 
-def getTileQValues(rowNumber, columnNumber):
-    rowKey = 'row ' + str(rowNumber)
-    columnKey = 'tile ' + str(columnNumber)
+def getTileQValues(row_number, column_number):
+    rowKey = 'row ' + str(row_number)
+    columnKey = 'tile ' + str(column_number)
     return list(tileMap[rowKey][columnKey]['qValues'].values())
 
 
 def value(tile):
-    v = max(getTileQValues(tile['rowNumber'], tile['columnNumber']))
+    v = max(getTileQValues(tile['row_number'], tile['column_number']))
     if v > 0.0:
         return v
     else:
         return 0.0
 
 
-def probability(currentLocation, action, newLocation):
+def probability(current_location, action, newLocation):
     p = 0.09
 
-    currentRowNumber = int(currentLocation['rowNumber'])
-    currentColumnNumber = int(currentLocation['columnNumber'])
-    newRowNumber = int(newLocation['rowNumber'])
-    newColumnNumber = int(newLocation['columnNumber'])
+    currentRowNumber = int(current_location['row_number'])
+    currentColumnNumber = int(current_location['column_number'])
+    newRowNumber = int(newLocation['row_number'])
+    newColumnNumber = int(newLocation['column_number'])
 
     if action == 'left' and currentColumnNumber - newColumnNumber == 1:
         p = 0.82
@@ -1032,14 +1034,14 @@ def probability(currentLocation, action, newLocation):
 
 
 def reward(newLocation):
-    tileType = getTileType(newLocation['rowNumber'], newLocation['columnNumber'])
+    tileType = getTileType(newLocation['row_number'], newLocation['column_number'])
     return tileTypeRewards[tileType]
 
 
-def expectedReward(currentLocation, action):
+def expectedReward(current_location, action):
     res = 0.0
-    for newLocation in getReachableTiles(currentLocation, action):
-        res += probability(currentLocation, action, newLocation) * reward(newLocation)
+    for newLocation in get_reachable_tiles(current_location, action):
+        res += probability(current_location, action, newLocation) * reward(newLocation)
     return res
 
 
@@ -1051,25 +1053,25 @@ def valueIteration(iterationCount):
 
         for row in rows:
             rowKey = row[0]
-            rowNumber = row[0].split()[1]
+            row_number = row[0].split()[1]
             tiles = row[1].items()
 
             for tile in tiles:
                 tileKey = tile[0]
-                columnNumber = tile[0].split()[1]
+                column_number = tile[0].split()[1]
                 tileType = tile[1]['tileType']
 
-                currentLocation = {
-                    'columnNumber': columnNumber,
-                    'rowNumber': rowNumber
+                current_location = {
+                    'column_number': column_number,
+                    'row_number': row_number
                 }
 
                 if tileType == 'unmarked':
                     for a in allActions:
                         temporaryValue = 0.0
-                        for newLocation in getReachableTiles(currentLocation, a):
-                            temporaryValue += probability(currentLocation, a, newLocation) * value(newLocation)
-                        tileMapCopy[rowKey][tileKey]['qValues'][a] = expectedReward(currentLocation, a) + gamma * temporaryValue
+                        for newLocation in get_reachable_tiles(current_location, a):
+                            temporaryValue += probability(current_location, a, newLocation) * value(newLocation)
+                        tileMapCopy[rowKey][tileKey]['qValues'][a] = expectedReward(current_location, a) + gamma * temporaryValue
         tileMap = tileMapCopy
     return
 
