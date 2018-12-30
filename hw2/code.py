@@ -1,4 +1,4 @@
-# ------------------------------ Homework 2: Implementing the Value Iteration Algorithm ------------------------------ #
+# ------------------------------ Homework 2: Implementing Value Iteration Algorithm ------------------------------ #
 # Implement the get_tile_value iteration algorithm to calculate the optimal policy to maximize the reward.
 #
 # Background story: Tinny Tim, the little orphan robot, lives in an abandoned basement in New New York City. Tinny
@@ -16,7 +16,7 @@ gamma = 0.8
 print('CS-5001: HW#2\n'
       'Programmer: Alex Shaw\n'
       f'Discount Gamma = {gamma}\n')
-num_iterations = int(input('Enter number of iterations you would like to run get_tile_value iteration for: '))
+num_iterations = int(input('Enter number of iterations you would like to run value iteration for: '))
 total_num_iterations = 0
 all_possible_movements = ['up', 'down', 'left', 'right']
 object_rewards = {
