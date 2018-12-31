@@ -268,10 +268,10 @@ while num_iterations > 0:
     iteration_string = 'Iteration' if (total_num_iterations < 2) else 'Iterations'
     print(f'\n====================== Values After {total_num_iterations} {iteration_string} ======================')
     print_values(grid_map, grid_edge)
-
     print('\n=========================================================================')
     num_iterations = int(input('Enter number of additional iterations desired: '))
     print('=========================================================================')
 
 print('\n================================= Policy ================================')
 print_policy(grid_map, grid_edge)
+print('=========================================================================')
