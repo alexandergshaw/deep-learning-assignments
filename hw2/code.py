@@ -27,929 +27,950 @@ rewards = {
     'oni': -10,
     'unoccupied': 0
 }
-grid_map = {
-    'row 0': {
-        'tile 0': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 1': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 2': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 3': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 4': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 5': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 6': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 7': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 8': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 9': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-    },
-    'row 1': {
-        'tile 0': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 1': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 2': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 3': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 4': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 5': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 6': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 7': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 8': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 9': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-    },
-    'row 2': {
-        'tile 0': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 1': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 2': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 3': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 4': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 5': {
-            'object_occupying_tile': 'donut',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 6': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 7': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 8': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 9': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-    },
-    'row 3': {
-        'tile 0': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 1': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 2': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 3': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 4': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 5': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 6': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 7': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 8': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 9': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-    },
-    'row 4': {
-        'tile 0': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 1': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 2': {
-            'object_occupying_tile': 'fire',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 3': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 4': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 5': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 6': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 7': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 8': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 9': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-    },
-    'row 5': {
-        'tile 0': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 1': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 2': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 3': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 4': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 5': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 6': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 7': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 8': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 9': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-    },
-    'row 6': {
-        'tile 0': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 1': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 2': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 3': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 4': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 5': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 6': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 7': {
-            'object_occupying_tile': 'cake',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 8': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 9': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-    },
-    'row 7': {
-        'tile 0': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 1': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 2': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 3': {
-            'object_occupying_tile': 'oni',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 4': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 5': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 6': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 7': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 8': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 9': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-    },
-    'row 8': {
-        'tile 0': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 1': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 2': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 3': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 4': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 5': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 6': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 7': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 8': {
-            'object_occupying_tile': 'unoccupied',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 9': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-    },
-    'row 9': {
-        'tile 0': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 1': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 2': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 3': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 4': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 5': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 6': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 7': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 8': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-        'tile 9': {
-            'object_occupying_tile': 'wall',
-            'q_values': {
-                'up': 0,
-                'down': 0,
-                'left': 0,
-                'right': 0
-            }
-        },
-    }
-}
 
+# grid_map = {
+#     'row 0': {
+#         'tile 0': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 1': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 2': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 3': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 4': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 5': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 6': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 7': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 8': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 9': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#     },
+#     'row 1': {
+#         'tile 0': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 1': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 2': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 3': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 4': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 5': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 6': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 7': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 8': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 9': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#     },
+#     'row 2': {
+#         'tile 0': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 1': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 2': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 3': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 4': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 5': {
+#             'object_occupying_tile': 'donut',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 6': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 7': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 8': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 9': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#     },
+#     'row 3': {
+#         'tile 0': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 1': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 2': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 3': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 4': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 5': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 6': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 7': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 8': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 9': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#     },
+#     'row 4': {
+#         'tile 0': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 1': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 2': {
+#             'object_occupying_tile': 'fire',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 3': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 4': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 5': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 6': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 7': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 8': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 9': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#     },
+#     'row 5': {
+#         'tile 0': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 1': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 2': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 3': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 4': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 5': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 6': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 7': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 8': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 9': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#     },
+#     'row 6': {
+#         'tile 0': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 1': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 2': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 3': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 4': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 5': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 6': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 7': {
+#             'object_occupying_tile': 'cake',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 8': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 9': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#     },
+#     'row 7': {
+#         'tile 0': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 1': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 2': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 3': {
+#             'object_occupying_tile': 'oni',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 4': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 5': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 6': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 7': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 8': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 9': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#     },
+#     'row 8': {
+#         'tile 0': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 1': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 2': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 3': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 4': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 5': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 6': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 7': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 8': {
+#             'object_occupying_tile': 'unoccupied',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 9': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#     },
+#     'row 9': {
+#         'tile 0': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 1': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 2': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 3': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 4': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 5': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 6': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 7': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 8': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#         'tile 9': {
+#             'object_occupying_tile': 'wall',
+#             'q_values': {
+#                 'up': 0,
+#                 'down': 0,
+#                 'left': 0,
+#                 'right': 0
+#             }
+#         },
+#     }
+# }
+
+def read_in_grid():
+    grid = {}
+    input_file = open('grid.txt')
+    for row_index, row in enumerate(input_file):
+        row_key = 'row ' + str(row_index)
+        grid[row_key] = {}
+        strip_white_space = row.replace(' ', '')
+        row_tiles_list = strip_white_space.split('|')
+        for tile_index, object_on_tile in enumerate(row_tiles_list):
+            tile_key = 'tile ' + str(tile_index)
+            grid[row_key][tile_key] = {
+                'object_occupying_tile': object_on_tile,
+                'q_values': {
+                    'up': 0.00,
+                    'down': 0.00,
+                    'left': 0.00,
+                    'right': 0.00
+                }
+            }
+    return grid
 
 def get_reachable_tiles(current_location, movement):
     reachable_tiles = []
@@ -1164,6 +1185,8 @@ def print_policy(grid, grid_edge):
 
 
 grid_edge = '+--------+--------+--------+--------+--------+--------+--------+--------+'
+
+grid_map = read_in_grid()
 
 while num_iterations > 0:
     value_iteration(num_iterations)
