@@ -13,10 +13,15 @@
 import copy
 
 gamma = 0.8
-print('CS-5001: HW#2\n'
+print('============================= CS-5001: HW#2 ============================= \n'
       'Programmer: Alex Shaw\n'
-      f'Discount Gamma = {gamma}\n')
-num_iterations = int(input('Enter number of iterations you would like to run value iteration for: '))
+      f'Discount Gamma = {gamma}')
+print('=========================================================================')
+
+print('\n=========================================================================')
+num_iterations = int(input('Enter number of iterations desired: '))
+print('=========================================================================')
+
 total_num_iterations = 0
 all_possible_movements = ['up', 'down', 'left', 'right']
 rewards = {
@@ -37,7 +42,6 @@ def read_in_grid():
         strip_white_space = row.replace(' ', '')
         strip_newlines = strip_white_space.rstrip()
         row_tiles_list = strip_newlines.split('|')
-        print(row_tiles_list)
         for tile_index, object_on_tile in enumerate(row_tiles_list):
             tile_key = 'tile ' + str(tile_index)
             grid[row_key][tile_key] = {
@@ -183,12 +187,7 @@ def value_iteration(iterations):
     return
 
 
-def insert_white_space(value, edge):
-    grid_column_list = edge.split('+')
-    grid_column_list = grid_column_list.remove(' ')
-    print(grid_column_list)
-
-
+def insert_white_space(value):
     num_characters_per_tile = 7
     num_leading_white_spaces = num_characters_per_tile - len(value)
     leading_white_space = ''
@@ -214,7 +213,7 @@ def print_values(grid, edge):
                     else:
                         tile_value = position['object_occupying_tile'].upper()
 
-                    row_string += insert_white_space(tile_value, edge) + tile_value + ' |'
+                    row_string += insert_white_space(tile_value) + tile_value + ' |'
             print(row_string)
     print(edge)
 
@@ -254,7 +253,7 @@ def print_policy(grid, edge):
                     else:
                         tile_value = position['object_occupying_tile'].upper()
 
-                    row_string += insert_white_space(tile_value, edge) + tile_value + ' |'
+                    row_string += insert_white_space(tile_value) + tile_value + ' |'
             print(row_string)
     print(edge)
 
@@ -266,11 +265,13 @@ while num_iterations > 0:
     value_iteration(num_iterations)
     total_num_iterations = total_num_iterations + num_iterations
 
-    status_string = 'iteration' if (total_num_iterations < 2) else 'iterations'
-    print(f'Values after {total_num_iterations} {status_string}:')
+    iteration_string = 'Iteration' if (total_num_iterations < 2) else 'Iterations'
+    print(f'\n====================== Values After {total_num_iterations} {iteration_string} ======================')
     print_values(grid_map, grid_edge)
 
-    num_iterations = int(input('Enter number of additional iterations you would like to run get_tile_value iteration for: '))
+    print('\n=========================================================================')
+    num_iterations = int(input('Enter number of additional iterations desired: '))
+    print('=========================================================================')
 
-print('Policy: ')
+print('\n================================= Policy ================================')
 print_policy(grid_map, grid_edge)

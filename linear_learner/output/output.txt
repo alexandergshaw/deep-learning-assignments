@@ -2,12 +2,12 @@ CS-5001: HW#1
 Programmer: Alex Shaw
 
 TRAINING
-Using random seed = 1546278403
+Using random seed = 1546279977
 Using learning rate eta = 0.00016
 After 5000 iterations:
 Weights:
-w0 = 36.54212100808515
-w1 = 2.16385191841208
+w0 = 36.54228624812883
+w1 = 2.1638491943572027
 
 VALIDATION
-Sum-of-Squares Error = 6.086979279724419
+Sum-of-Squares Error = 6.085033016819983
