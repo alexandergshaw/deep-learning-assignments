@@ -30,7 +30,7 @@ rewards = {
 
 def read_in_grid():
     grid = {}
-    input_file = open('grid.txt')
+    input_file = open('input/grid.txt')
     for row_index, row in enumerate(input_file):
         row_key = 'row ' + str(row_index)
         grid[row_key] = {}
@@ -260,7 +260,6 @@ def print_policy(grid, edge):
 
 
 grid_edge = '+--------+--------+--------+--------+--------+--------+--------+--------+'
-
 grid_map = read_in_grid()
 
 while num_iterations > 0:
