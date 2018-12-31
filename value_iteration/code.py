@@ -1,4 +1,4 @@
-# ------------------------------ Homework 2: Implementing Value Iteration Algorithm ------------------------------ #
+# ------------------------------ Homework 2: Implementing Value Iteration Algorithm ---------------------------------- #
 # Implement the get_tile_value iteration algorithm to calculate the optimal policy to maximize the reward.
 #
 # Background story: Tinny Tim, the little orphan robot, lives in an abandoned basement in New New York City. Tinny
