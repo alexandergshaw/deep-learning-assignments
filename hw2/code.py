@@ -958,7 +958,8 @@ def read_in_grid():
         row_key = 'row ' + str(row_index)
         grid[row_key] = {}
         strip_white_space = row.replace(' ', '')
-        row_tiles_list = strip_white_space.split('|')
+        strip_newlines = strip_white_space.rstrip()
+        row_tiles_list = strip_newlines.split('|')
         for tile_index, object_on_tile in enumerate(row_tiles_list):
             tile_key = 'tile ' + str(tile_index)
             grid[row_key][tile_key] = {
