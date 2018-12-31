@@ -40,7 +40,7 @@ def train_linear_learner(rate, seed):
         asteroid_chunk_selling_price_list.append(float(data[1]))
 
     for iteration in range(0, num_iterations):
-        for entry_number in list(range(0, len(asteroid_chunk_mass_list))):
+        for entry_number in range(0, len(asteroid_chunk_mass_list)):
             mass = int(asteroid_chunk_mass_list[entry_number])
             selling_price = float(asteroid_chunk_selling_price_list[entry_number])
             delta = calculate_delta(learner_weight_list, mass, selling_price)
