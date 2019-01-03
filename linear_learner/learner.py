@@ -70,20 +70,21 @@ def evaluate_learner(learner_weights):
     return error
 
 
-learning_rate = 0.00016
-random_seed = int(round(time.time()))
-weights_list = train_linear_learner(learning_rate, random_seed)
-learner_error = evaluate_learner(weights_list)
+if __name__ == '__main__':
+    learning_rate = 0.00016
+    random_seed = int(round(time.time()))
+    weights_list = train_linear_learner(learning_rate, random_seed)
+    learner_error = evaluate_learner(weights_list)
 
-outputFile = open('output/output.txt', 'w+')
-outputFile.write('CS-5001: HW#1 ')
-outputFile.write('\nProgrammer: Alex Shaw')
-outputFile.write('\n\nTRAINING')
-outputFile.write('\nUsing random seed = ' + str(random_seed))
-outputFile.write('\nUsing learning rate eta = ' + str(learning_rate))
-outputFile.write('\nAfter 5000 iterations:')
-outputFile.write('\nWeights:')
-outputFile.write('\nw0 = ' + str(weights_list[0]))
-outputFile.write('\nw1 = ' + str(weights_list[1]))
-outputFile.write('\n\nVALIDATION')
-outputFile.write('\nSum-of-Squares Error = ' + str(learner_error))
+    outputFile = open('output/output.txt', 'w+')
+    outputFile.write('CS-5001: HW#1 ')
+    outputFile.write('\nProgrammer: Alex Shaw')
+    outputFile.write('\n\nTRAINING')
+    outputFile.write('\nUsing random seed = ' + str(random_seed))
+    outputFile.write('\nUsing learning rate eta = ' + str(learning_rate))
+    outputFile.write('\nAfter 5000 iterations:')
+    outputFile.write('\nWeights:')
+    outputFile.write('\nw0 = ' + str(weights_list[0]))
+    outputFile.write('\nw1 = ' + str(weights_list[1]))
+    outputFile.write('\n\nVALIDATION')
+    outputFile.write('\nSum-of-Squares Error = ' + str(learner_error))
