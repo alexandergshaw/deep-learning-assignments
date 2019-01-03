@@ -12,26 +12,6 @@
 
 import copy
 
-gamma = 0.8
-print('============================= CS-5001: HW#2 ============================= \n'
-      'Programmer: Alex Shaw\n'
-      f'Discount Gamma = {gamma}')
-print('=========================================================================')
-
-print('\n=========================================================================')
-num_iterations = int(input('Enter number of iterations desired: '))
-print('=========================================================================')
-
-total_num_iterations = 0
-all_possible_movements = ['up', 'down', 'left', 'right']
-rewards = {
-    'wall': -1,
-    'cake': 10,
-    'donut': 3,
-    'fire': -5,
-    'oni': -10,
-    'unoccupied': 0
-}
 
 def read_in_grid():
     grid = {}
@@ -54,6 +34,7 @@ def read_in_grid():
                 }
             }
     return grid
+
 
 def get_reachable_tiles(current_location, movement):
     reachable_tiles = []
@@ -258,20 +239,39 @@ def print_policy(grid, edge):
     print(edge)
 
 
-grid_edge = '+--------+--------+--------+--------+--------+--------+--------+--------+'
-grid_map = read_in_grid()
-
-while num_iterations > 0:
-    value_iteration(num_iterations)
-    total_num_iterations = total_num_iterations + num_iterations
-
-    iteration_string = 'Iteration' if (total_num_iterations < 2) else 'Iterations'
-    print(f'\n====================== Values After {total_num_iterations} {iteration_string} ======================')
-    print_values(grid_map, grid_edge)
-    print('\n=========================================================================')
-    num_iterations = int(input('Enter number of additional iterations desired: '))
+if __name__ == '__main__':
+    gamma = 0.8
+    print('============================= CS-5001: HW#2 ============================= \n'
+          'Programmer: Alex Shaw\n'
+          f'Discount Gamma: {gamma}')
+    num_iterations = int(input('Enter number of iterations desired: '))
     print('=========================================================================')
 
-print('\n================================= Policy ================================')
-print_policy(grid_map, grid_edge)
-print('=========================================================================')
+    total_num_iterations = 0
+    all_possible_movements = ['up', 'down', 'left', 'right']
+    rewards = {
+        'wall': -1,
+        'cake': 10,
+        'donut': 3,
+        'fire': -5,
+        'oni': -10,
+        'unoccupied': 0
+    }
+
+    grid_edge = '+--------+--------+--------+--------+--------+--------+--------+--------+'
+    grid_map = read_in_grid()
+
+    while num_iterations > 0:
+        value_iteration(num_iterations)
+        total_num_iterations = total_num_iterations + num_iterations
+
+        iteration_string = 'Iteration' if (total_num_iterations < 2) else 'Iterations'
+        print(f'\n====================== Values After {total_num_iterations} {iteration_string} ======================')
+        print_values(grid_map, grid_edge)
+        print('=========================================================================')
+        num_iterations = int(input('Enter number of additional iterations desired: '))
+        print('=========================================================================')
+
+    print('\n================================= Policy ================================')
+    print_policy(grid_map, grid_edge)
+    print('=========================================================================')
