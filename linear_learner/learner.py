@@ -1,6 +1,6 @@
 """
-This module implements a linear learner using gradient descent, and performs regression on input data. Sum-of-Squares
-error is used to measure the learner's accuracy.
+This module implements a linear learner using gradient descent, performs regression on input data, and measures the
+learner's accuracy using sum-of-squares error.
 """
 
 # ----------------------------------- Homework 1: Implementing a Linear Learner ----------------------------------- #

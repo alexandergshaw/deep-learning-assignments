@@ -1,11 +1,14 @@
+"""
+This module implements the value iteration algorithm to calculate the optimal policy to maximize the reward.
+"""
+
 # ------------------------------ Homework 2: Implementing Value Iteration Algorithm ---------------------------------- #
-# Implement the get_tile_value iteration algorithm to calculate the optimal policy to maximize the reward.
-#
-# Background story: Tinny Tim, the little orphan robot, lives in an abandoned basement in New New York City. Tinny
-# Tim's basement can be described as a 10x10 grid (see problem_description.pdf for a visual representation). Some of
-# these grid's tiles are occupied by objects. Tinny Tim receives a reward (positive or negative) for navigating to any
-# of these items (see problem_description.pdf for a chart of these rewards). Help Tinny Tim navigate to the items that
-# will maximize his reward.
+# Summarized Problem Description:
+# Tinny Tim, the little orphan robot, lives in an abandoned basement in New New York City. Tinny Tim's basement can be
+# described as a 10x10 grid (see problem_description.pdf for a visual representation). Some of these grid's tiles are
+# occupied by objects. Tinny Tim receives a reward (positive or negative) for navigating to any of these items (see
+# problem_description.pdf for a chart of these rewards). Help Tinny Tim navigate to the items that will maximize his
+# reward.
 #
 # Full problem description can be found in problem_description.pdf.
 # -------------------------------------------------------------------------------------------------------------------- #
@@ -14,14 +17,28 @@ import copy
 
 
 def read_in_grid():
+    """
+    Reads grid in from text file, returns dict object containing grid.
+
+    Returns:
+    dict: Representation of the grid.
+    """
+    
     grid = {}
     input_file = open('input/grid.txt')
+      
     for row_index, row in enumerate(input_file):
         row_key = 'row ' + str(row_index)
+        
+        # create sub-dictionary to house info about grid row
         grid[row_key] = {}
+        
+        # convert line from input file into format compatible with looping and dictionary
         strip_white_space = row.replace(' ', '')
         strip_newlines = strip_white_space.rstrip()
         row_tiles_list = strip_newlines.split('|')
+        
+        # store information on individual tiles
         for tile_index, object_on_tile in enumerate(row_tiles_list):
             tile_key = 'tile ' + str(tile_index)
             grid[row_key][tile_key] = {
@@ -36,43 +53,63 @@ def read_in_grid():
     return grid
 
 
-def get_reachable_tiles(current_location, movement):
+def get_reachable_tiles(current_location, movement_direction):
+    """
+    Determines the tiles that Tinny Tim can reach from his current position, given a direction that Tim is moving in
+    up, down, left, right).
+    
+    Parameters:
+    current_location (dict): Tinny Tim's current location, represented by the row_number and column_number key-value 
+    pairs.
+    
+    movement_direction (string): The direction (up, down, left, or right) that Tinny Tim will move in.
+    
+    Returns:
+    list: Contains dict objects - each dict represents a tile that Tinny Tim can move to from his current position.
+    """
+
     reachable_tiles = []
     row_number = int(current_location['row_number'])
     column_number = int(current_location['column_number'])
 
+    # the outermost rows and columns are entirely walls, and Tinny Tim is not able to move onto those tiles
     if 0 < row_number < 9 and 0 < column_number < 9:
-        possible_movements = copy.copy(all_possible_movements)
+        # make shallow copy to prevent changing the original list 
+        possible_movement_directions = copy.copy(all_possible_movements)
 
-        if movement == 'up' and 'down' in possible_movements:
-            possible_movements.remove('down')
-        elif movement == 'down' and 'up' in possible_movements:
-            possible_movements.remove('up')
-        elif movement == 'left' and 'right' in possible_movements:
-            possible_movements.remove('right')
-        elif movement == 'right' and 'left' in possible_movements:
-            possible_movements.remove('left')
+        # note: any time Tinny Tim moves in a direction, he has a chance of moving in all directions except the one
+        # opposite to the direction he attempts to move in (i.e. if he wants to moves up, he has a chance of moving up, 
+        # left, or right, but not down). 
+        if movement_direction == 'up' and 'down' in possible_movement_directions:
+            possible_movement_directions.remove('down')
+        elif movement_direction == 'down' and 'up' in possible_movement_directions:
+            possible_movement_directions.remove('up')
+        elif movement_direction == 'left' and 'right' in possible_movement_directions:
+            possible_movement_directions.remove('right')
+        elif movement_direction == 'right' and 'left' in possible_movement_directions:
+            possible_movement_directions.remove('left')
 
-        for motion in possible_movements:
-            if motion == 'up':
+        # for each direction that Tinny Tim can move in, store the corresponding tile that he would reach
+        for direction in possible_movement_directions:
+            if direction == 'up':
                 tile = {
                     'row_number': row_number - 1,
                     'column_number': column_number
                 }
 
-            elif motion == 'down':
+            elif direction == 'down':
                 tile = {
                     'row_number': row_number + 1,
                     'column_number': column_number
                 }
 
-            elif motion == 'left':
+            elif direction == 'left':
                 tile = {
                     'row_number': row_number,
                     'column_number': column_number - 1
                 }
 
-            elif motion == 'right':
+            elif direction == 'right':
                 tile = {
                     'row_number': row_number,
                     'column_number': column_number + 1
@@ -82,6 +119,12 @@ def get_reachable_tiles(current_location, movement):
 
 
 def get_object_occupying_tile(row_number, column_number):
+    """
+    Returns the object that is occupying a specified tile.
+    :param row_number:
+    :param column_number:
+    :return:
+    """
     row_key = 'row ' + str(row_number)
     column_key = 'tile ' + str(column_number)
     return grid_map[row_key][column_key]['object_occupying_tile']
@@ -101,22 +144,22 @@ def get_tile_value(tile):
         return 0.0
 
 
-def calculate_movement_probability(current_location, movement, new_location):
+def calculate_movement_probability(current_location, movement_direction, new_location):
     current_row_number = int(current_location['row_number'])
     current_column_number = int(current_location['column_number'])
     move_to_row_number = int(new_location['row_number'])
     move_to_column_number = int(new_location['column_number'])
 
-    if movement == 'left' and current_column_number - move_to_column_number == 1:
+    if movement_direction == 'left' and current_column_number - move_to_column_number == 1:
         probability = 0.82
 
-    elif movement == 'right' and current_column_number - move_to_column_number == -1:
+    elif movement_direction == 'right' and current_column_number - move_to_column_number == -1:
         probability = 0.82
 
-    elif movement == 'up' and current_row_number - move_to_row_number == 1:
+    elif movement_direction == 'up' and current_row_number - move_to_row_number == 1:
         probability = 0.82
 
-    elif movement == 'down' and current_row_number - move_to_row_number == -1:
+    elif movement_direction == 'down' and current_row_number - move_to_row_number == -1:
         probability = 0.82
 
     else:
@@ -130,10 +173,10 @@ def get_reward(new_location):
     return rewards[object_occupying_tile]
 
 
-def calculate_expected_reward(current_location, movement):
+def calculate_expected_reward(current_location, movement_direction):
     res = 0.0
-    for new_location in get_reachable_tiles(current_location, movement):
-        res += calculate_movement_probability(current_location, movement, new_location) * get_reward(new_location)
+    for new_location in get_reachable_tiles(current_location, movement_direction):
+        res += calculate_movement_probability(current_location, movement_direction, new_location) * get_reward(new_location)
     return res
 
 
@@ -159,11 +202,11 @@ def value_iteration(iterations):
                 }
 
                 if object_occupying_tile == 'unoccupied':
-                    for movement in all_possible_movements:
+                    for movement_direction in all_possible_movements:
                         value = 0.0
-                        for new_location in get_reachable_tiles(current_location, movement):
-                            value += calculate_movement_probability(current_location, movement, new_location) * get_tile_value(new_location)
-                        grid_map_copy[row_key][tile_key]['q_values'][movement] = calculate_expected_reward(current_location, movement) + gamma * value
+                        for new_location in get_reachable_tiles(current_location, movement_direction):
+                            value += calculate_movement_probability(current_location, movement_direction, new_location) * get_tile_value(new_location)
+                        grid_map_copy[row_key][tile_key]['q_values'][movement_direction] = calculate_expected_reward(current_location, movement_direction) + gamma * value
         grid_map = grid_map_copy
     return
 
