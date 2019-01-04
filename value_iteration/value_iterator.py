@@ -200,17 +200,21 @@ def calculate_movement_probability(current_location, movement_direction, new_loc
     movement_direction (string): movement_direction (string): The direction (up, down, left, or right) that Tinny Tim
     will move in.
 
-    :param new_location:
-    :return:
+    new_location (dict): The tile that Tinny Tim is attempting to move to, represented by the row_number and
+    column_number key-value pairs. Dict should have keys named "row_number" and "column_number", both of whose values
+    are either an integer or a string representation of an integer.
+
+    Returns:
+    float: Probability that Tinny Tim will move to the new_location.
     """
 
     current_row_number = int(current_location['row_number'])
     current_column_number = int(current_location['column_number'])
     move_to_row_number = int(new_location['row_number'])
     move_to_column_number = int(new_location['column_number'])
-    
     lowercase_movement_direction = movement_direction.lower()
 
+    # determine if new_location (relative to current_location) is in the same direction as movement_direction
     if lowercase_movement_direction == 'left' and current_column_number - move_to_column_number == 1:
         probability = 0.82
 
@@ -223,31 +227,81 @@ def calculate_movement_probability(current_location, movement_direction, new_loc
     elif lowercase_movement_direction == 'down' and current_row_number - move_to_row_number == -1:
         probability = 0.82
 
+    # determine if new_location (relative to current_location) is in a direction that is perpendicular to movement_direction
     elif new_location in get_reachable_tiles(current_location, lowercase_movement_direction):
         probability = 0.09
+
+    # determine if new_location (relative to current_location) is in a direction opposite to movement_direction
+    else:
+        probability = 0.00
 
     return probability
 
 
-def get_reward(new_location):
-    object_occupying_tile = get_object_occupying_tile(new_location)
+def get_reward(tile):
+    """
+    Returns the reward associated with moving to a particular tile.
+
+    Parameters:
+    tile (dict): The tile in question, represented by the row_number and
+    column_number key-value pairs. Dict should have keys named "row_number" and "column_number", both of whose values
+    are either an integer or a string representation of an integer.
+
+    Returns:
+    int: The reward value that Tinny Tim will receive upon moving to a particular tile. Rewards are as follows:
+
+    OBJECT  |   REWARD
+    Cake    |    10
+    Donut   |    3
+    Wall    |   -1
+    Fire    |   -5
+    Oni     |   -10
+    """
+
+    object_occupying_tile = get_object_occupying_tile(tile)
     return rewards[object_occupying_tile]
 
 
 def calculate_expected_reward(current_location, movement_direction):
+    """
+    Returns the reward that Tinny Tim can expect to receive from moving in a given direction from a given location.
+
+    Parameters:
+    current_location (dict): The tile where Tinny Tim is currently located, represented by the row_number and
+    column_number key-value pairs. Dict should have keys named "row_number" and "column_number", both of whose values
+    are either an integer or a string representation of an integer.
+
+    movement_direction (string): movement_direction (string): The direction (up, down, left, or right) that Tinny Tim
+    will move in.
+
+    Returns:
+    float: The expected reward from moving in a given direction from a given current location. 
+    """
+    
     res = 0.0
     lowercase_movement_direction = movement_direction.lower()
-
+    
+    # sum up the rewards that Tinny Tim will receive from moving to each of the tiles that he can reach (given the 
+    # current location and a movement direction)
     for new_location in get_reachable_tiles(current_location, lowercase_movement_direction):
         res += calculate_movement_probability(current_location, lowercase_movement_direction, new_location) * get_reward(new_location)
     return res
 
 
-def value_iteration(iterations):
-    global grid_map
+def value_iteration(iterations, grid):
+    """
+    Runs the value iteration algorithm for the specified number of iterations.
+    
+    Parameters: 
+    iterations (int): The number of iterations that the value iterator algorithm should run for. 
+    
+    Returns:
+    dict: Representation of grid, updated with new q values.
+    """
+    
     for i in range(0, iterations):
-        grid_map_copy = copy.deepcopy(grid_map)
-        grid_rows = grid_map.items()
+        grid_copy = copy.deepcopy(grid)
+        grid_rows = grid.items()
 
         for row in grid_rows:
             row_key = row[0]
@@ -270,14 +324,27 @@ def value_iteration(iterations):
                         lowercase_movement_direction = movement_direction.lower()
                         for new_location in get_reachable_tiles(current_location, lowercase_movement_direction):
                             value += calculate_movement_probability(current_location, lowercase_movement_direction, new_location) * get_tile_value(new_location)
-                        grid_map_copy[row_key][tile_key]['q_values'][lowercase_movement_direction] = calculate_expected_reward(current_location, lowercase_movement_direction) + gamma * value
-        grid_map = grid_map_copy
-    return
+                        grid_copy[row_key][tile_key]['q_values'][lowercase_movement_direction] = calculate_expected_reward(current_location, lowercase_movement_direction) + gamma * value
+        grid = grid_copy
+    return grid
 
 
-def insert_white_space(value):
+def insert_white_space(content):
+    """
+    Returns the amount of white space that should precede the content on a tile within the grid that is printed to the
+    console.
+
+    Parameters:
+    content (string): The value, word, or characters to be printed to a tile on the grid.
+
+    Return:
+    string: The number of necessary white spaces, all concatenated into one string. 
+    """
     num_characters_per_tile = 7
-    num_leading_white_spaces = num_characters_per_tile - len(value)
+    
+    # the number of white spaces needed
+    num_leading_white_spaces = num_characters_per_tile - len(content)
+    
     leading_white_space = ''
     for i in range(0, num_leading_white_spaces):
         leading_white_space += ' '
@@ -285,17 +352,34 @@ def insert_white_space(value):
 
 
 def print_values(grid, edge):
+    """
+    Print the grid to the console, with each unoccupied tile filled with its corresponding q value.
+
+    Parameters:
+    grid (dict): A representation of the grid, including all information associated with it.
+
+    edge (string): The string to print to the console when printing the edge of the grid
+
+    Returns: N/A
+    """
     print(edge)
     for row in grid:
+        # don't print the first and last rows, since those are just wall tiles
         if row != 'row 0' and row != 'row 9':
             row_string = '|'
             tiles = grid[row]
             for tile in tiles:
                 position = tiles[tile]
+
+                # don't print the first and last tile in a row, since those are just wall tiles
                 if tile != 'tile 0' and tile != 'tile 9':
                     if position['object_occupying_tile'] == 'unoccupied':
                         q_values = list(position['q_values'].values())
+
+                        # fill the tile with the maximum q value associated with that tile
                         tile_value = ' %.3f' % max(q_values)
+
+                    # there will be non-perimeter tiles that are occupied by walls
                     elif position['object_occupying_tile'] == 'wall':
                         tile_value = 'XXXXXX'
                     else:
@@ -307,19 +391,39 @@ def print_values(grid, edge):
 
 
 def print_policy(grid, edge):
+    """
+        Print the grid to the console, with each unoccupied tile filled with the direction that Tinny Tim should move
+        when on that tile.
+
+        Parameters:
+        grid (dict): A representation of the grid, including all information associated with it.
+
+        edge (string): The string to print to the console when printing the edge of the grid
+
+        Returns: N/A
+    """
     print(edge)
     for row in grid:
+        # don't print the first and last rows, since those are just wall tiles
         if row != 'row 0' and row != 'row 9':
             row_string = '|'
             tiles = grid[row]
             for tile in tiles:
                 position = tiles[tile]
+
+                # don't print the first and last tile in a row, since those are just wall tiles
                 if tile != 'tile 0' and tile != 'tile 9':
+
+                    # Tinny Tim only continues moving on spaces that are not occupied, and so those are the only spaces
+                    # that need a direction for Tinny Tim to move
                     if position['object_occupying_tile'] == 'unoccupied':
                         q_values = position['q_values']
+
+                        # get the direction associated with a tile's maximum q value
                         direction = max(q_values, key=lambda key: q_values[key])
                         q_value = float(q_values[direction])
 
+                        # determine which direction Tinny Tim should move on each tile, and print that direction
                         if q_value == 0.000:
                             tile_value = 'N/A'
 
@@ -369,7 +473,7 @@ if __name__ == '__main__':
     grid_map = read_in_grid()
 
     while num_iterations > 0:
-        value_iteration(num_iterations)
+        grid_map = value_iteration(num_iterations, grid_map)
         total_num_iterations = total_num_iterations + num_iterations
 
         iteration_string = 'Iteration' if (total_num_iterations < 2) else 'Iterations'
