@@ -60,7 +60,8 @@ def get_reachable_tiles(current_location, movement_direction):
     
     Parameters:
     current_location (dict): Tinny Tim's current location, represented by the row_number and column_number key-value 
-    pairs.
+    pairs. Dict should have keys named "row_number" and "column_number", both of whose values are either an integer or
+    a string representation of an integer.
     
     movement_direction (string): The direction (up, down, left, or right) that Tinny Tim will move in.
     
@@ -118,26 +119,45 @@ def get_reachable_tiles(current_location, movement_direction):
     return reachable_tiles
 
 
-def get_object_occupying_tile(row_number, column_number):
+def get_object_occupying_tile(tile):
     """
     Returns the object that is occupying a specified tile.
-    :param row_number:
-    :param column_number:
-    :return:
+
+    Parameters:
+    tile (dict): The tile in question, represented by the row_number and column_number key-value
+    pairs. Dict should have keys named "row_number" and "column_number", both of whose values are either an integer or
+    a string representation of an integer.
+
+    Returns:
+    string: Name of object occupying tile.
     """
-    row_key = 'row ' + str(row_number)
-    column_key = 'tile ' + str(column_number)
+
+    row_key = 'row ' + str(tile['row_number'])
+    column_key = 'tile ' + str(tile['column_number'])
     return grid_map[row_key][column_key]['object_occupying_tile']
 
 
-def get_tile_q_values(row_number, column_number):
-    row_key = 'row ' + str(row_number)
-    column_key = 'tile ' + str(column_number)
+def get_tile_q_values(tile):
+    """
+    Returns all of the q values associated with a particular tile.
+
+    Parameters:
+    tile (dict): The tile in question, represented by the row_number and column_number key-value
+    pairs. Dict should have keys named "row_number" and "column_number", both of whose values are either an integer or
+    a string representation of an integer.
+
+    Returns:
+    list: List of floats representing the q values associated with a tile.
+    """
+    row_key = 'row ' + str(tile['row_number'])
+    column_key = 'tile ' + str(tile['column_number'])
+
+    print('q values', grid_map[row_key][column_key]['q_values'].values())
     return list(grid_map[row_key][column_key]['q_values'].values())
 
 
 def get_tile_value(tile):
-    tile_value = max(get_tile_q_values(tile['row_number'], tile['column_number']))
+    tile_value = max(get_tile_q_values(tile))
     if tile_value > 0.0:
         return tile_value
     else:
@@ -169,7 +189,7 @@ def calculate_movement_probability(current_location, movement_direction, new_loc
 
 
 def get_reward(new_location):
-    object_occupying_tile = get_object_occupying_tile(new_location['row_number'], new_location['column_number'])
+    object_occupying_tile = get_object_occupying_tile(new_location)
     return rewards[object_occupying_tile]
 
 
