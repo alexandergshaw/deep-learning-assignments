@@ -72,6 +72,7 @@ def get_reachable_tiles(current_location, movement_direction):
     reachable_tiles = []
     row_number = int(current_location['row_number'])
     column_number = int(current_location['column_number'])
+    lowercase_movement_direction = movement_direction.lower()
 
     # the outermost rows and columns are entirely walls, and Tinny Tim is not able to move onto those tiles
     if 0 < row_number < 9 and 0 < column_number < 9:
@@ -81,13 +82,13 @@ def get_reachable_tiles(current_location, movement_direction):
         # note: any time Tinny Tim moves in a direction, he has a chance of moving in all directions except the one
         # opposite to the direction he attempts to move in (i.e. if he wants to moves up, he has a chance of moving up, 
         # left, or right, but not down). 
-        if movement_direction == 'up' and 'down' in possible_movement_directions:
+        if lowercase_movement_direction == 'up' and 'down' in possible_movement_directions:
             possible_movement_directions.remove('down')
-        elif movement_direction == 'down' and 'up' in possible_movement_directions:
+        elif lowercase_movement_direction == 'down' and 'up' in possible_movement_directions:
             possible_movement_directions.remove('up')
-        elif movement_direction == 'left' and 'right' in possible_movement_directions:
+        elif lowercase_movement_direction == 'left' and 'right' in possible_movement_directions:
             possible_movement_directions.remove('right')
-        elif movement_direction == 'right' and 'left' in possible_movement_directions:
+        elif lowercase_movement_direction == 'right' and 'left' in possible_movement_directions:
             possible_movement_directions.remove('left')
 
         # for each direction that Tinny Tim can move in, store the corresponding tile that he would reach
@@ -152,11 +153,21 @@ def get_tile_q_values(tile):
     row_key = 'row ' + str(tile['row_number'])
     column_key = 'tile ' + str(tile['column_number'])
 
-    print('q values', grid_map[row_key][column_key]['q_values'].values())
     return list(grid_map[row_key][column_key]['q_values'].values())
 
 
 def get_tile_value(tile):
+    """
+    Returns the value associated with a particular tile (i.e. the maximum q value).
+
+    Parameters:
+    tile (dict): The tile in question, represented by the row_number and column_number key-value
+    pairs. Dict should have keys named "row_number" and "column_number", both of whose values are either an integer or
+    a string representation of an integer.
+
+    Returns:
+    float: The maximum q value associated with a tile.
+    """
     tile_value = max(get_tile_q_values(tile))
     if tile_value > 0.0:
         return tile_value
@@ -165,24 +176,54 @@ def get_tile_value(tile):
 
 
 def calculate_movement_probability(current_location, movement_direction, new_location):
+    """
+    Returns the probability that Tinny Tim will move from his current location to an adjacent given new location, given
+    a movement direction.
+
+    The probability of Tinny Tim moving to a tile that is located in the same direction as his attempted movement (i.e.
+    a tile that is located one row above his current location on the grid, when Tinny Tim is attempting to move up) is
+    equal to 0.82.
+
+    The probability of Tinny Tim moving to a tile that is located in a direction that is perpendicular to the one he is
+    attempting to move in (i.e. a tile that is located one column to the left of his current location, when Tinny Tim is
+    attempting to move up) is 0.09.
+
+    The probability of Tinny Tim moving to a tile that is located in direction that is opposite to the one he is
+    attempting to move in (i.e. a tile that is located one row below his current location on the grid, when Tinny Tim is
+    attempting to move up) is 0.
+
+    Parameters:
+    current_location (dict): The tile where Tinny Tim is currently located, represented by the row_number and
+    column_number key-value pairs. Dict should have keys named "row_number" and "column_number", both of whose values
+    are either an integer or a string representation of an integer.
+
+    movement_direction (string): movement_direction (string): The direction (up, down, left, or right) that Tinny Tim
+    will move in.
+
+    :param new_location:
+    :return:
+    """
+
     current_row_number = int(current_location['row_number'])
     current_column_number = int(current_location['column_number'])
     move_to_row_number = int(new_location['row_number'])
     move_to_column_number = int(new_location['column_number'])
+    
+    lowercase_movement_direction = movement_direction.lower()
 
-    if movement_direction == 'left' and current_column_number - move_to_column_number == 1:
+    if lowercase_movement_direction == 'left' and current_column_number - move_to_column_number == 1:
         probability = 0.82
 
-    elif movement_direction == 'right' and current_column_number - move_to_column_number == -1:
+    elif lowercase_movement_direction == 'right' and current_column_number - move_to_column_number == -1:
         probability = 0.82
 
-    elif movement_direction == 'up' and current_row_number - move_to_row_number == 1:
+    elif lowercase_movement_direction == 'up' and current_row_number - move_to_row_number == 1:
         probability = 0.82
 
-    elif movement_direction == 'down' and current_row_number - move_to_row_number == -1:
+    elif lowercase_movement_direction == 'down' and current_row_number - move_to_row_number == -1:
         probability = 0.82
 
-    else:
+    elif new_location in get_reachable_tiles(current_location, lowercase_movement_direction):
         probability = 0.09
 
     return probability
@@ -195,8 +236,10 @@ def get_reward(new_location):
 
 def calculate_expected_reward(current_location, movement_direction):
     res = 0.0
-    for new_location in get_reachable_tiles(current_location, movement_direction):
-        res += calculate_movement_probability(current_location, movement_direction, new_location) * get_reward(new_location)
+    lowercase_movement_direction = movement_direction.lower()
+
+    for new_location in get_reachable_tiles(current_location, lowercase_movement_direction):
+        res += calculate_movement_probability(current_location, lowercase_movement_direction, new_location) * get_reward(new_location)
     return res
 
 
@@ -224,9 +267,10 @@ def value_iteration(iterations):
                 if object_occupying_tile == 'unoccupied':
                     for movement_direction in all_possible_movements:
                         value = 0.0
-                        for new_location in get_reachable_tiles(current_location, movement_direction):
-                            value += calculate_movement_probability(current_location, movement_direction, new_location) * get_tile_value(new_location)
-                        grid_map_copy[row_key][tile_key]['q_values'][movement_direction] = calculate_expected_reward(current_location, movement_direction) + gamma * value
+                        lowercase_movement_direction = movement_direction.lower()
+                        for new_location in get_reachable_tiles(current_location, lowercase_movement_direction):
+                            value += calculate_movement_probability(current_location, lowercase_movement_direction, new_location) * get_tile_value(new_location)
+                        grid_map_copy[row_key][tile_key]['q_values'][lowercase_movement_direction] = calculate_expected_reward(current_location, lowercase_movement_direction) + gamma * value
         grid_map = grid_map_copy
     return
 
